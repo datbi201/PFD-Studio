@@ -1,0 +1,42 @@
+const { chromium } = require('playwright');
+const fs=require('fs');
+(async()=>{
+ const b=await chromium.launch();const ctx=await b.newContext({viewport:{width:1500,height:900},acceptDownloads:true});const p=await ctx.newPage();
+ const errs=[];p.on('pageerror',e=>errs.push('PAGEERR '+e.message+(e.stack||'').split('\n').slice(0,3).join('|')));p.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
+ await p.goto('file://'+__dirname.replace(/\\/g,'/')+'/rev6a.html');await p.waitForTimeout(400);
+ await p.evaluate(()=>setModule('cad'));
+ const run=async(...cmds)=>{for(const c of cmds){await p.evaluate(c=>cadSubmit(c),c)}};
+ await run('rec','1000,1500','@4000,3000');
+ await run('c','3000,3000','800');
+ await run('l','1000,6000','@4000,0','@0,800','');
+ await run('a','5500,1500','6000,2300','5500,3000');
+ await run('d','1000,1500','5000,1500','3000,800');
+ await run('d','5000,1500','5000,4500','5800,3000');
+ await run('dal','1000,6000','5000,6800','2500,7600');
+ await run('dra');
+ await p.evaluate(()=>{CAD.cmd.click(u2w({x:3800,y:3000}),{raw:u2w({x:3800,y:3000})});CAD.cmd.click(u2w({x:4600,y:3900}),{})});
+ await run('h');await p.evaluate(()=>{CAD.cmd.click(u2w({x:1500,y:2000}),{typed:true});cadEnter()});
+ await run('t','1200,5200');
+ await p.evaluate(()=>{const n=state.nodes[state.nodes.length-1];n.title='Phòng khách\nPhòng 1';n.rot=0;renderAll()});
+ // add custom layer, centre line
+ await p.evaluate(()=>{cadCfg().cur='CEN'});
+ await run('l','3000,1000','@0,4000','');
+ const before=await p.evaluate(()=>({shapes:state.shapes.map(h=>h.t).join(','),nodes:state.nodes.length}));
+ console.log('before',JSON.stringify(before));
+ const [dl]=await Promise.all([p.waitForEvent('download'),p.evaluate(()=>exportDXF())]);
+ await dl.saveAs(__dirname+'/full.dxf');
+ await p.evaluate(()=>{sel=new Set();fitView()});
+ await p.evaluate(()=>{openPrint()});await p.waitForTimeout(400);
+ const [pd]=await Promise.all([p.waitForEvent('download'),p.evaluate(()=>downloadPDF())]);
+ await pd.saveAs(__dirname+'/full.pdf');
+ // fresh page import of own dxf
+ const p2=await ctx.newPage();p2.on('pageerror',e=>errs.push('P2 '+e.message));
+ await p2.goto('file://'+__dirname.replace(/\\/g,'/')+'/rev6a.html');await p2.waitForTimeout(300);
+ await p2.evaluate(()=>setModule('cad'));
+ await p2.setInputFiles('#dxfFile',__dirname+'/full.dxf');await p2.waitForTimeout(500);
+ const after=await p2.evaluate(()=>({shapes:state.shapes.map(h=>h.t).join(','),nodes:state.nodes.length,scale:cadCfg().scale,st:$('status').textContent,layers:cadCfg().layers.length}));
+ console.log('after',JSON.stringify(after));
+ await p2.locator('#wrap').screenshot({path:'cad_imp.png'});
+ console.log(errs.length?errs.join('\n'):'NO ERRORS');
+ await b.close();
+})();

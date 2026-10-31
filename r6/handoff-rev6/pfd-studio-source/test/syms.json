@@ -1,0 +1,2136 @@
+{
+ "sym": [
+  [
+   "h_sep",
+   "Bình / Tháp",
+   "Bình tách ngang",
+   [
+    "A — Cơ bản",
+    "B — Có demister",
+    "C — Đầu dĩa + chân đỡ",
+    "D — Có thùng nước (boot)"
+   ]
+  ],
+  [
+   "v_sep",
+   "Bình / Tháp",
+   "Bình tách đứng",
+   [
+    "A — Cơ bản",
+    "B — Có demister",
+    "C — Cyclone (vào tiếp tuyến)",
+    "D — Đầu dĩa + chân"
+   ]
+  ],
+  [
+   "sep3",
+   "Bình / Tháp",
+   "Tách 3 pha",
+   [
+    "A — Boot nước",
+    "B — Tấm chắn (weir)",
+    "C — Đầu dĩa + chân"
+   ]
+  ],
+  [
+   "scrubber",
+   "Bình / Tháp",
+   "Scrubber / KO drum",
+   [
+    "A — Đứng có lưới",
+    "B — Có đáy chứa lỏng",
+    "C — Nằm ngang"
+   ]
+  ],
+  [
+   "fsep",
+   "Bình / Tháp",
+   "Lọc tách / Coalescer",
+   [
+    "A — Filter separator",
+    "B — Coalescer đứng"
+   ]
+  ],
+  [
+   "desalter",
+   "Bình / Tháp",
+   "Desalter / Tách tĩnh điện",
+   [
+    "A — Điện cực"
+   ]
+  ],
+  [
+   "hydrocyclone",
+   "Bình / Tháp",
+   "Hydrocyclone",
+   [
+    "A — Hình nón",
+    "B — Cụm 3 cyclone"
+   ]
+  ],
+  [
+   "column",
+   "Bình / Tháp",
+   "Tháp chưng cất / hấp thụ",
+   [
+    "A — Đĩa (tray)",
+    "B — Đệm (packed)",
+    "C — Đĩa + phần đệm",
+    "D — Mảnh (stripper)"
+   ]
+  ],
+  [
+   "reactor",
+   "Bình / Tháp",
+   "Reactor / Lò phản ứng",
+   [
+    "A — Cơ bản",
+    "B — Có cánh khuấy (CSTR)",
+    "C — Tầng xúc tác cố định",
+    "D — Có áo gia nhiệt"
+   ]
+  ],
+  [
+   "tank",
+   "Bình / Tháp",
+   "Bồn chứa thường áp",
+   [
+    "A — Mái côn",
+    "B — Mái nổi",
+    "C — Mái vòm",
+    "D — Bồn nằm (bullet)"
+   ]
+  ],
+  [
+   "sphere",
+   "Bình / Tháp",
+   "Bồn cầu (LPG)",
+   [
+    "A — Chân đỡ",
+    "B — Đơn giản"
+   ]
+  ],
+  [
+   "flare",
+   "Bình / Tháp",
+   "Đuốc đốt khí (Flare)",
+   [
+    "A — Ống đuốc",
+    "B — Ground flare",
+    "C — Knock-out + đuốc"
+   ]
+  ],
+  [
+   "slug_catcher",
+   "Bình / Tháp",
+   "Slug catcher",
+   [
+    "A — Kiểu ngón",
+    "B — Bình lớn"
+   ]
+  ],
+  [
+   "cpi",
+   "Bình / Tháp",
+   "Tách dầu API / CPI",
+   [
+    "A — Hộp tấm nghiêng"
+   ]
+  ],
+  [
+   "sump",
+   "Bình / Tháp",
+   "Hố gom / Sump",
+   [
+    "A — Hố hở",
+    "B — Bể chìm"
+   ]
+  ],
+  [
+   "exchanger",
+   "Trao đổi nhiệt",
+   "Trao đổi nhiệt vỏ-ống",
+   [
+    "A — Ký hiệu chữ thập",
+    "B — Ống chữ U",
+    "C — Có vách ngăn (TEMA)",
+    "D — Vỏ-ống đứng"
+   ]
+  ],
+  [
+   "plate_hx",
+   "Trao đổi nhiệt",
+   "Trao đổi nhiệt tấm",
+   [
+    "A — Tấm",
+    "B — Khung + tấm"
+   ]
+  ],
+  [
+   "double_pipe",
+   "Trao đổi nhiệt",
+   "Ống lồng ống",
+   [
+    "A — Hairpin"
+   ]
+  ],
+  [
+   "reboiler",
+   "Trao đổi nhiệt",
+   "Reboiler / Kettle",
+   [
+    "A — Kettle",
+    "B — Thermosyphon"
+   ]
+  ],
+  [
+   "condenser",
+   "Trao đổi nhiệt",
+   "Condenser / Cooler",
+   [
+    "A — Chữ nhật",
+    "B — Nước làm mát"
+   ]
+  ],
+  [
+   "chiller",
+   "Trao đổi nhiệt",
+   "Chiller",
+   [
+    "A — Chiller"
+   ]
+  ],
+  [
+   "aircooler",
+   "Trao đổi nhiệt",
+   "Air cooler / Fin-fan",
+   [
+    "A — Cấp gió (forced)",
+    "B — Hút gió (induced)",
+    "C — Một quạt"
+   ]
+  ],
+  [
+   "heater",
+   "Trao đổi nhiệt",
+   "Lò gia nhiệt",
+   [
+    "A — Hộp lửa",
+    "B — Cabin + ống khói",
+    "C — Lò điện",
+    "D — Lò dầu nóng"
+   ]
+  ],
+  [
+   "wasteheat",
+   "Trao đổi nhiệt",
+   "Nồi hơi / Waste heat",
+   [
+    "A — Boiler",
+    "B — HRSG"
+   ]
+  ],
+  [
+   "cooling_tower",
+   "Trao đổi nhiệt",
+   "Tháp giải nhiệt",
+   [
+    "A — Cooling tower"
+   ]
+  ],
+  [
+   "pump",
+   "Bơm",
+   "Bơm ly tâm",
+   [
+    "A — Tròn + tam giác",
+    "B — ISO (đẩy lên trên)",
+    "C — Volute (cổ ra phía trên)",
+    "D — Bơm + động cơ",
+    "E — Bơm đứng (sump)",
+    "F — Bơm chìm (ESP)"
+   ]
+  ],
+  [
+   "pd_pump",
+   "Bơm",
+   "Bơm thể tích / định lượng",
+   [
+    "A — Bánh răng",
+    "B — Piston (reciprocating)",
+    "C — Trục vít",
+    "D — Màng (diaphragm)",
+    "E — Trục vít xoắn (PCP)",
+    "F — Định lượng (metering)"
+   ]
+  ],
+  [
+   "vac_pump",
+   "Bơm",
+   "Bơm chân không / Ejector",
+   [
+    "A — Bơm chân không",
+    "B — Ejector"
+   ]
+  ],
+  [
+   "compressor",
+   "Máy nén / Quạt / Turbine",
+   "Máy nén",
+   [
+    "A — Ly tâm (hình thang)",
+    "B — Ly tâm (ISO)",
+    "C — Piston (reciprocating)",
+    "D — Trục vít",
+    "E — Hướng trục",
+    "F — Máy nén + động cơ"
+   ]
+  ],
+  [
+   "blower",
+   "Máy nén / Quạt / Turbine",
+   "Quạt / Blower",
+   [
+    "A — Quạt hướng trục",
+    "B — Blower ly tâm"
+   ]
+  ],
+  [
+   "expander",
+   "Máy nén / Quạt / Turbine",
+   "Turbine / Expander",
+   [
+    "A — Turbo-expander",
+    "B — Turbine hơi",
+    "C — Turbine khí (GT)"
+   ]
+  ],
+  [
+   "motor",
+   "Máy nén / Quạt / Turbine",
+   "Động cơ / Máy phát",
+   [
+    "A — Động cơ điện (M)",
+    "B — Máy phát (G)",
+    "C — Động cơ đốt trong",
+    "D — Hộp số",
+    "E — Biến tần (VFD)"
+   ]
+  ],
+  [
+   "agitator",
+   "Máy nén / Quạt / Turbine",
+   "Máy khuấy / Mixer",
+   [
+    "A — Cánh khuấy",
+    "B — Mixer tĩnh",
+    "C — Điểm trộn"
+   ]
+  ],
+  [
+   "valve_gate",
+   "Van",
+   "Van cổng (gate)",
+   [
+    "A — Ký hiệu chuẩn",
+    "B — Có tay quay",
+    "C — Khóa (LO/LC)"
+   ]
+  ],
+  [
+   "valve_ball",
+   "Van",
+   "Van bi (ball)",
+   [
+    "A — Chấm đặc",
+    "B — Tay gạt",
+    "C — Van bi 3 ngả"
+   ]
+  ],
+  [
+   "valve_globe",
+   "Van",
+   "Van cầu (globe)",
+   [
+    "A — Vòng tròn",
+    "B — Có tay quay"
+   ]
+  ],
+  [
+   "valve_butterfly",
+   "Van",
+   "Van bướm",
+   [
+    "A — Vạch đứng",
+    "B — Cánh bướm"
+   ]
+  ],
+  [
+   "valve_plug",
+   "Van",
+   "Van nút / Needle",
+   [
+    "A — Van nút (plug)",
+    "B — Van kim (needle)"
+   ]
+  ],
+  [
+   "valve_check",
+   "Van",
+   "Van một chiều",
+   [
+    "A — Cơ bản",
+    "B — Swing check",
+    "C — Wafer (dual plate)"
+   ]
+  ],
+  [
+   "valve_control",
+   "Van",
+   "Van điều khiển",
+   [
+    "A — Màng (diaphragm)",
+    "B — Piston",
+    "C — Động cơ (motor)",
+    "D — Có positioner"
+   ]
+  ],
+  [
+   "valve_esd",
+   "Van",
+   "Van ESD / SDV / BDV",
+   [
+    "A — Màng + lò xo (SDV)",
+    "B — Piston + lò xo",
+    "C — Van bi + solenoid (ESDV)"
+   ]
+  ],
+  [
+   "valve_psv",
+   "Van",
+   "Van an toàn PSV",
+   [
+    "A — Góc, lò xo",
+    "B — Thẳng, lò xo",
+    "C — Pilot-operated"
+   ]
+  ],
+  [
+   "valve_rd",
+   "Van",
+   "Đĩa nổ / Rupture disc",
+   [
+    "A — Rupture disc"
+   ]
+  ],
+  [
+   "valve_reg",
+   "Van",
+   "Van giảm áp / PCV tự lực",
+   [
+    "A — Tự lực (lò xo)",
+    "B — Back-pressure"
+   ]
+  ],
+  [
+   "valve_sol",
+   "Van",
+   "Van điện từ / Float",
+   [
+    "A — Solenoid",
+    "B — Float valve",
+    "C — Van 4 ngả"
+   ]
+  ],
+  [
+   "vent_valve",
+   "Van",
+   "PVRV / Breather",
+   [
+    "A — PV valve",
+    "B — Vent mở"
+   ]
+  ],
+  [
+   "reducer",
+   "Phụ kiện đường ống",
+   "Côn thu / Reducer",
+   [
+    "A — Đồng tâm",
+    "B — Lệch tâm",
+    "C — Mở rộng (swage)"
+   ]
+  ],
+  [
+   "strainer",
+   "Phụ kiện đường ống",
+   "Lọc ống / Strainer",
+   [
+    "A — Dạng Y",
+    "B — Rổ lọc (basket)",
+    "C — Dạng T",
+    "D — Phin tạm (cone)"
+   ]
+  ],
+  [
+   "arrestor",
+   "Phụ kiện đường ống",
+   "Chặn lửa / Flame arrestor",
+   [
+    "A — Flame arrestor"
+   ]
+  ],
+  [
+   "spec_blind",
+   "Phụ kiện đường ống",
+   "Mặt bích mù / Spectacle",
+   [
+    "A — Spectacle (mở)",
+    "B — Spectacle (đóng)",
+    "C — Mặt bích mù",
+    "D — Nắp bịt (cap)"
+   ]
+  ],
+  [
+   "flange",
+   "Phụ kiện đường ống",
+   "Mặt bích / Khớp nối",
+   [
+    "A — Cặp mặt bích",
+    "B — Khớp giãn nở (bellows)",
+    "C — Ống mềm (hose)",
+    "D — Điểm nối nhanh"
+   ]
+  ],
+  [
+   "sight",
+   "Phụ kiện đường ống",
+   "Kính quan sát / Bẫy hơi",
+   [
+    "A — Sight glass",
+    "B — Steam trap",
+    "C — Silencer",
+    "D — Drain pot"
+   ]
+  ],
+  [
+   "vent_drain",
+   "Phụ kiện đường ống",
+   "Vent / Drain / Lấy mẫu",
+   [
+    "A — Vent",
+    "B — Drain",
+    "C — Điểm lấy mẫu",
+    "D — Điểm hoá chất (injection)",
+    "E — Đầu nối ống mềm"
+   ]
+  ],
+  [
+   "ptap",
+   "Phụ kiện đường ống",
+   "Thermowell / Nhánh đo",
+   [
+    "A — Thermowell",
+    "B — Nhánh áp suất"
+   ]
+  ],
+  [
+   "orifice",
+   "Đo lường tại ống (inline)",
+   "Tấm tiết lưu / FE",
+   [
+    "A — Orifice plate",
+    "B — Có ống đo áp chênh",
+    "C — Venturi",
+    "D — Flow nozzle",
+    "E — Pitot / Annubar"
+   ]
+  ],
+  [
+   "flowmeter",
+   "Đo lường tại ống (inline)",
+   "Lưu lượng kế (inline)",
+   [
+    "A — Coriolis",
+    "B — Siêu âm",
+    "C — Từ (mag)",
+    "D — Vortex",
+    "E — Turbine",
+    "F — PD (bánh răng)",
+    "G — Rotameter"
+   ]
+  ],
+  [
+   "analyzer",
+   "Đo lường tại ống (inline)",
+   "Đầu dò phân tích",
+   [
+    "A — Đầu dò (probe)",
+    "B — H2S / CO2 online",
+    "C — Máy đo điểm sương"
+   ]
+  ],
+  [
+   "levelinst",
+   "Đo lường tại ống (inline)",
+   "Đo mức (tại bình)",
+   [
+    "A — Kính đo mức (LG)",
+    "B — Radar / sóng dẫn",
+    "C — Phao (float)",
+    "D — Đo mức áp chênh (DP)"
+   ]
+  ],
+  [
+   "pt",
+   "Đo & điều khiển (C&I)",
+   "Máy phát áp suất (PT)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "tt",
+   "Đo & điều khiển (C&I)",
+   "Máy phát nhiệt độ (TT)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "ft",
+   "Đo & điều khiển (C&I)",
+   "Máy phát lưu lượng (FT)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "lt",
+   "Đo & điều khiển (C&I)",
+   "Máy phát mức (LT)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "at",
+   "Đo & điều khiển (C&I)",
+   "Máy phân tích (AT)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "pdt",
+   "Đo & điều khiển (C&I)",
+   "Máy phát áp chênh (PDT)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "pi",
+   "Đo & điều khiển (C&I)",
+   "Chỉ thị áp suất (PI)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "ti",
+   "Đo & điều khiển (C&I)",
+   "Chỉ thị nhiệt độ (TI)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "fi",
+   "Đo & điều khiển (C&I)",
+   "Chỉ thị lưu lượng (FI)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "li",
+   "Đo & điều khiển (C&I)",
+   "Chỉ thị mức (LI)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "pic",
+   "Đo & điều khiển (C&I)",
+   "Bộ điều khiển áp suất (PIC)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "tic",
+   "Đo & điều khiển (C&I)",
+   "Bộ điều khiển nhiệt độ (TIC)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "fic",
+   "Đo & điều khiển (C&I)",
+   "Bộ điều khiển lưu lượng (FIC)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "lic",
+   "Đo & điều khiển (C&I)",
+   "Bộ điều khiển mức (LIC)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "aic",
+   "Đo & điều khiển (C&I)",
+   "Bộ điều khiển phân tích (AIC)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "psh",
+   "Đo & điều khiển (C&I)",
+   "Công tắc áp cao (PSH)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "psl",
+   "Đo & điều khiển (C&I)",
+   "Công tắc áp thấp (PSL)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "pshh",
+   "Đo & điều khiển (C&I)",
+   "Áp rất cao (PSHH)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "pall",
+   "Đo & điều khiển (C&I)",
+   "Áp rất thấp (PSLL)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "lsh",
+   "Đo & điều khiển (C&I)",
+   "Công tắc mức cao (LSH)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "lsl",
+   "Đo & điều khiển (C&I)",
+   "Công tắc mức thấp (LSL)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "lshh",
+   "Đo & điều khiển (C&I)",
+   "Mức rất cao (LSHH)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "lsll",
+   "Đo & điều khiển (C&I)",
+   "Mức rất thấp (LSLL)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "tsh",
+   "Đo & điều khiển (C&I)",
+   "Công tắc nhiệt cao (TSH)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "fsl",
+   "Đo & điều khiển (C&I)",
+   "Công tắc lưu lượng thấp (FSL)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "zs",
+   "Đo & điều khiển (C&I)",
+   "Công tắc hành trình (ZSO/ZSC)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "hs",
+   "Đo & điều khiển (C&I)",
+   "Công tắc tay / nút (HS)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "ys",
+   "Đo & điều khiển (C&I)",
+   "Rơ-le / logic (YS)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "fq",
+   "Đo & điều khiển (C&I)",
+   "Tổng lưu (FQI)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "sis",
+   "Đo & điều khiển (C&I)",
+   "Chức năng an toàn (SIS)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "instrument",
+   "Đo & điều khiển (C&I)",
+   "Vòng đo / điều khiển (tự đặt tên)",
+   [
+    "A — Tại hiện trường",
+    "B — Trong phòng điều khiển",
+    "C — Tủ phụ / local panel",
+    "D — DCS (hiển thị chia sẻ)",
+    "E — PLC / logic (thoi)",
+    "F — Máy tính (lục giác)"
+   ]
+  ],
+  [
+   "gauge",
+   "Đo & điều khiển (C&I)",
+   "Đồng hồ cơ",
+   [
+    "A — Đồng hồ áp suất",
+    "B — Đồng hồ nhiệt độ",
+    "C — Đồng hồ + cách ly (seal)"
+   ]
+  ],
+  [
+   "alarm",
+   "Đo & điều khiển (C&I)",
+   "Báo động / An toàn",
+   [
+    "A — Còi (horn)",
+    "B — Đèn báo",
+    "C — Nút ESD (nấm)",
+    "D — Cảm biến lửa (FD)",
+    "E — Cảm biến khí (GD)",
+    "F — Cảm biến khói (SD)"
+   ]
+  ],
+  [
+   "cabinet",
+   "Điện / Tủ điều khiển",
+   "Tủ điều khiển",
+   [
+    "A — DCS",
+    "B — PLC",
+    "C — ESD / SIS",
+    "D — RTU",
+    "E — F&G panel",
+    "F — Hộp nối (JB)"
+   ]
+  ],
+  [
+   "hmi",
+   "Điện / Tủ điều khiển",
+   "Trạm vận hành / HMI",
+   [
+    "A — HMI",
+    "B — Panel cục bộ (LCP)"
+   ]
+  ],
+  [
+   "power",
+   "Điện / Tủ điều khiển",
+   "MCC / Máy biến áp / UPS",
+   [
+    "A — MCC",
+    "B — Biến áp",
+    "C — UPS / Ắc quy",
+    "D — Cầu dao / Switchgear"
+   ]
+  ],
+  [
+   "wellhead",
+   "Giếng / Package / Xuất nhập",
+   "Đầu giếng (Xmas tree)",
+   [
+    "A — Cây thông",
+    "B — Đầu giếng đơn giản"
+   ]
+  ],
+  [
+   "choke",
+   "Giếng / Package / Xuất nhập",
+   "Van tiết lưu (choke)",
+   [
+    "A — Choke",
+    "B — Choke điều chỉnh được"
+   ]
+  ],
+  [
+   "manifold",
+   "Giếng / Package / Xuất nhập",
+   "Manifold / Header",
+   [
+    "A — Header 4 nhánh",
+    "B — Header dọc"
+   ]
+  ],
+  [
+   "pig",
+   "Giếng / Package / Xuất nhập",
+   "Pig launcher / receiver",
+   [
+    "A — Launcher",
+    "B — Receiver"
+   ]
+  ],
+  [
+   "skid",
+   "Giếng / Package / Xuất nhập",
+   "Skid / Package",
+   [
+    "A — Skid đo đếm (LACT)",
+    "B — Skid hoá chất",
+    "C — Package chung",
+    "D — Skid đo ngoài (bơm + lưu lượng)"
+   ]
+  ],
+  [
+   "loading",
+   "Giếng / Package / Xuất nhập",
+   "Xuất nhập (xe / tàu / toa)",
+   [
+    "A — Cần xuất (loading arm)",
+    "B — Xe bồn",
+    "C — Tàu / Jetty",
+    "D — Toa tàu hoả"
+   ]
+  ],
+  [
+   "pipeline",
+   "Giếng / Package / Xuất nhập",
+   "Đường ống / Riser / SSIV",
+   [
+    "A — Pipeline (đoạn dài)",
+    "B — Riser",
+    "C — Cắt ngắt (break)"
+   ]
+  ],
+  [
+   "feed",
+   "Dòng vào / ra & nối",
+   "Dòng vào (Feed)",
+   [
+    "A — Mũi tên",
+    "B — Hình tròn",
+    "C — Tam giác"
+   ]
+  ],
+  [
+   "product",
+   "Dòng vào / ra & nối",
+   "Dòng ra (Product)",
+   [
+    "A — Mũi tên",
+    "B — Hình tròn",
+    "C — Tam giác"
+   ]
+  ],
+  [
+   "offpage",
+   "Dòng vào / ra & nối",
+   "Ký hiệu nối bản vẽ",
+   [
+    "A — Đến bản vẽ khác",
+    "B — Từ bản vẽ khác",
+    "C — Vòng số hiệu",
+    "D — Điểm nối (tie-in)"
+   ]
+  ],
+  [
+   "junction",
+   "Dòng vào / ra & nối",
+   "Điểm rẽ nhánh (tee)",
+   [
+    "A — Chấm",
+    "B — Chấm lớn"
+   ]
+  ],
+  [
+   "text",
+   "Chú thích",
+   "Khung chữ / Ghi chú",
+   [
+    "A — Chữ"
+   ]
+  ],
+  [
+   "area",
+   "Chú thích",
+   "Khung ranh giới / Package",
+   [
+    "A — Gạch chấm"
+   ]
+  ],
+  [
+   "note",
+   "Chú thích",
+   "Ghi chú / Hold / Revision",
+   [
+    "A — Nhãn ghi chú",
+    "B — Hold (△)",
+    "C — Revision (△)",
+    "D — Mũi tên chỉ hướng"
+   ]
+  ],
+  [
+   "filter",
+   "Bình / Tháp",
+   "Phin lọc / Filter",
+   [
+    "A — Phin lọc đứng",
+    "B — Cartridge",
+    "C — Lọc ngang",
+    "D — Lọc than hoạt tính"
+   ]
+  ],
+  [
+   "steam_turbine",
+   "Máy nén / Quạt / Turbine",
+   "Turbine hơi (HP / MP / LP)",
+   [
+    "A — Đối áp (HP vào → LP ra)",
+    "B — Ngưng hơi (xả chân không)",
+    "C — Trích hơi MP (đối áp)",
+    "D — Nhiều áp suất HP / MP / LP",
+    "E — Trích + ngưng (extraction-condensing)",
+    "F — Turbine + máy phát (STG)",
+    "G — HP + LP hai thân, hâm hơi (reheat)",
+    "H — Dẫn động máy nén (khớp nối + trục)"
+   ]
+  ],
+  [
+   "compressor2",
+   "Máy nén / Quạt / Turbine",
+   "Máy nén nhiều cấp (2–3 cấp)",
+   [
+    "A — 2 cấp ly tâm + làm mát giữa cấp",
+    "B — 2 cấp, cửa liên cấp để hở (IS-out / IS-in)",
+    "C — Piston 2 cấp (2 xy-lanh, cửa liên cấp)",
+    "D — Piston 2 cấp + làm mát giữa cấp",
+    "E — 3 cấp ly tâm (cửa liên cấp 1 và 2)",
+    "F — 1 vỏ, 2 phần (back-to-back)",
+    "G — 2 cấp ly tâm + động cơ điện"
+   ]
+  ],
+  [
+   "platform",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Giàn khai thác / FPSO",
+   [
+    "A — Giàn cố định (jacket)",
+    "B — Giàn tự nâng (jack-up)",
+    "C — Giàn bán chìm (semi-submersible)",
+    "D — FPSO (tàu chứa nổi)",
+    "E — Giàn đầu giếng không người (WHP)",
+    "F — Giàn xử lý trung tâm (CPP)"
+   ]
+  ],
+  [
+   "subsea",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Thiết bị dưới biển (Subsea)",
+   [
+    "A — Cây thông dưới biển (subsea tree)",
+    "B — Manifold dưới biển",
+    "C — PLEM / PLET (đầu nối ống đáy biển)",
+    "D — Template 3 cây thông"
+   ]
+  ],
+  [
+   "gas_plant",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Nhà máy xử lý khí / LNG",
+   [
+    "A — Nhà máy xử lý khí (GPP)",
+    "B — Dây chuyền hóa lỏng LNG (train)",
+    "C — Phân đoạn NGL / LPG (3 tháp)"
+   ]
+  ],
+  [
+   "comp_station",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Trạm nén khí",
+   [
+    "A — Trạm nén ly tâm",
+    "B — Trạm nén dùng turbine khí",
+    "C — Trạm nén piston"
+   ]
+  ],
+  [
+   "lng_tank",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Bồn LNG / Kho lạnh",
+   [
+    "A — Full containment (mái vòm)",
+    "B — Single containment + đê bao",
+    "C — Bồn cầu LNG (Moss) + skirt",
+    "D — Bồn chìm / bán chìm",
+    "E — Bồn LNG nhỏ (vệ tinh, chân đỡ)"
+   ]
+  ],
+  [
+   "regas",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Hóa khí LNG (Regas)",
+   [
+    "A — ORV (giàn trao đổi nhiệt nước biển)",
+    "B — SCV (đốt chìm)",
+    "C — AAV (bay hơi bằng không khí)",
+    "D — IFV (môi chất trung gian)"
+   ]
+  ],
+  [
+   "city_gate",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Trạm điều áp / đo đếm (PRS / PRMS)",
+   [
+    "A — Trạm điều áp (PRS)",
+    "B — Trạm đo đếm (metering)",
+    "C — Trạm điều áp + đo đếm (PRMS)"
+   ]
+  ],
+  [
+   "power_plant",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Nhà máy điện khí",
+   [
+    "A — Chu trình hỗn hợp (CCGT)",
+    "B — Tua-bin khí + máy phát (GT)",
+    "C — Nhà máy động cơ khí (gas engine)",
+    "D — Nhiệt điện khí (lò hơi + turbine)"
+   ]
+  ],
+  [
+   "consumer",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Hộ tiêu thụ khí",
+   [
+    "A — Nhà máy / khu công nghiệp",
+    "B — Khu dân cư / đô thị",
+    "C — Trạm nạp CNG / LNG (cây xăng)",
+    "D — Hộ gia đình / bếp",
+    "E — Nhà máy phân đạm / hóa chất",
+    "F — Tòa nhà thương mại / khách sạn"
+   ]
+  ],
+  [
+   "valve_station",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Trạm van tuyến ống",
+   [
+    "A — Trạm van chặn (block valve)",
+    "B — Trạm phóng / nhận thoi (pig)",
+    "C — Trạm cắt khẩn cấp (SSV / ESD)"
+   ]
+  ],
+  [
+   "terminal",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Cảng / Kho / Phao (terminal)",
+   [
+    "A — Cầu cảng (jetty) + tàu",
+    "B — Phao một điểm (SPM / CALM)",
+    "C — Kho LPG (bồn trụ nằm + bồn cầu)",
+    "D — Kho xăng dầu (3 bồn + đê)"
+   ]
+  ],
+  [
+   "storage",
+   "Hạ tầng chuỗi cung ứng khí",
+   "Kho chứa khí ngầm (UGS)",
+   [
+    "A — Mỏ cạn kiệt (depleted reservoir)",
+    "B — Hang muối (salt cavern)",
+    "C — Tầng chứa nước (aquifer)"
+   ]
+  ],
+  [
+   "truck",
+   "Vận tải (xe / tàu / tàu hỏa)",
+   "Xe bồn / Xe chuyên chở khí",
+   [
+    "A — Xe bồn LNG (rơ-moóc 2 lớp chân không)",
+    "B — Xe bồn LPG (bồn áp lực)",
+    "C — Xe bồn xăng dầu (3 ngăn)",
+    "D — Xe ống CNG (tube trailer)",
+    "E — Xe chở container ISO tank",
+    "F — Xe bồn LNG nhỏ (khung cứng)"
+   ]
+  ],
+  [
+   "rail",
+   "Vận tải (xe / tàu / tàu hỏa)",
+   "Tàu hỏa / Toa bồn",
+   [
+    "A — Đầu máy + 2 toa bồn",
+    "B — Toa bồn LPG (áp lực)",
+    "C — Toa bồn dầu thô",
+    "D — Toa chở container ISO"
+   ]
+  ],
+  [
+   "ship",
+   "Vận tải (xe / tàu / tàu hỏa)",
+   "Tàu / Sà lan chở khí & dầu",
+   [
+    "A — Tàu LNG (màng, bồn lăng trụ)",
+    "B — Tàu LNG (Moss, 4 bồn cầu)",
+    "C — Tàu LPG (bồn trụ nằm)",
+    "D — Tàu dầu (tanker)",
+    "E — Sà lan chở khí / dầu (barge)",
+    "F — FSRU (tàu chứa & hóa khí nổi)",
+    "G — Tàu CNG (giá bình khí)",
+    "H — Tàu kéo / tàu phục vụ giàn"
+   ]
+  ],
+  [
+   "container",
+   "Vận tải (xe / tàu / tàu hỏa)",
+   "Container / ISO tank / Bình khí",
+   [
+    "A — ISO tank container",
+    "B — Container CNG (giá bình nằm)",
+    "C — Cụm bình khí (module chai)",
+    "D — Bình LPG (chai 12 kg)"
+   ]
+  ]
+ ],
+ "cats": [
+  "Bình / Tháp",
+  "Trao đổi nhiệt",
+  "Bơm",
+  "Máy nén / Quạt / Turbine",
+  "Van",
+  "Phụ kiện đường ống",
+  "Đo lường tại ống (inline)",
+  "Đo & điều khiển (C&I)",
+  "Điện / Tủ điều khiển",
+  "Giếng / Package / Xuất nhập",
+  "Hạ tầng chuỗi cung ứng khí",
+  "Vận tải (xe / tàu / tàu hỏa)",
+  "Dòng vào / ra & nối",
+  "Chú thích"
+ ],
+ "std": [
+  [
+   "b3610",
+   "ASME B36.10M — Thép carbon / hợp kim (NPS 1/8–80)"
+  ],
+  [
+   "b3619",
+   "ASME B36.19M — Inox (NPS 1/8–30, 5S/10S/40S/80S)"
+  ],
+  [
+   "iso",
+   "Hệ mét ISO 4200 / EN 10220 (OD loạt 1)"
+  ],
+  [
+   "tube",
+   "Ống trao đổi nhiệt / tube (OD + BWG)"
+  ],
+  [
+   "tubing",
+   "Ống nhỏ đo lường / thủy lực (tubing)"
+  ],
+  [
+   "cu",
+   "Ống đồng ASTM B88 (Type K / L / M)"
+  ],
+  [
+   "pe",
+   "HDPE PE100 — ISO 4427 (OD × SDR)"
+  ],
+  [
+   "custom",
+   "Tùy chỉnh (nhập OD & chiều dày)"
+  ]
+ ],
+ "mats": [
+  [
+   "cs_a106b",
+   "Thép carbon ASTM A106 Gr.B (liền mạch)",
+   "CS A106-B"
+  ],
+  [
+   "cs_a53b",
+   "Thép carbon ASTM A53 Gr.B",
+   "CS A53-B"
+  ],
+  [
+   "api5l_b",
+   "Thép đường ống API 5L Gr.B",
+   "API 5L B"
+  ],
+  [
+   "api5l_x52",
+   "Thép đường ống API 5L X52",
+   "API 5L X52"
+  ],
+  [
+   "api5l_x60",
+   "Thép đường ống API 5L X60",
+   "API 5L X60"
+  ],
+  [
+   "api5l_x65",
+   "Thép đường ống API 5L X65",
+   "API 5L X65"
+  ],
+  [
+   "api5l_x70",
+   "Thép đường ống API 5L X70",
+   "API 5L X70"
+  ],
+  [
+   "ltcs",
+   "Thép carbon nhiệt độ thấp ASTM A333 Gr.6",
+   "LTCS A333-6"
+  ],
+  [
+   "galv",
+   "Thép carbon mạ kẽm (A53 galvanized)",
+   "CS GALV"
+  ],
+  [
+   "p11",
+   "Hợp kim ASTM A335 P11 (1¼Cr–½Mo)",
+   "A335 P11"
+  ],
+  [
+   "p22",
+   "Hợp kim ASTM A335 P22 (2¼Cr–1Mo)",
+   "A335 P22"
+  ],
+  [
+   "p91",
+   "Hợp kim ASTM A335 P91 (9Cr–1Mo–V)",
+   "A335 P91"
+  ],
+  [
+   "ss304",
+   "Inox 304 / 304L (A312 TP304L)",
+   "SS 304L"
+  ],
+  [
+   "ss316",
+   "Inox 316 / 316L (A312 TP316L)",
+   "SS 316L"
+  ],
+  [
+   "ss321",
+   "Inox 321 / 347 (ổn định hóa)",
+   "SS 321/347"
+  ],
+  [
+   "dss2205",
+   "Duplex 2205 (UNS S31803 / S32205)",
+   "DSS 2205"
+  ],
+  [
+   "sdss2507",
+   "Super duplex 2507 (UNS S32750)",
+   "SDSS 2507"
+  ],
+  [
+   "a825",
+   "Hợp kim Incoloy 825 (UNS N08825)",
+   "Alloy 825"
+  ],
+  [
+   "a625",
+   "Hợp kim Inconel 625 (UNS N06625)",
+   "Alloy 625"
+  ],
+  [
+   "cuni",
+   "Cu-Ni 90/10 (UNS C70600)",
+   "CuNi 90/10"
+  ],
+  [
+   "ti2",
+   "Titan Gr.2",
+   "Ti Gr.2"
+  ],
+  [
+   "hdpe",
+   "Nhựa HDPE PE100",
+   "HDPE PE100"
+  ],
+  [
+   "gre",
+   "Composite GRE / GRP (sợi thủy tinh)",
+   "GRE/GRP"
+  ],
+  [
+   "other",
+   "Khác (tự nhập)…",
+   "…"
+  ]
+ ],
+ "phase": [
+  [
+   "gas",
+   "Khí"
+  ],
+  [
+   "oil",
+   "Dầu"
+  ],
+  [
+   "water",
+   "Nước"
+  ],
+  [
+   "mix",
+   "Hỗn hợp"
+  ]
+ ],
+ "kinds": [
+  [
+   "process",
+   "Process — nét liền"
+  ],
+  [
+   "dashed",
+   "Utility / phụ trợ — nét đứt"
+  ],
+  [
+   "signal",
+   "Tín hiệu đo / điều khiển — chấm"
+  ],
+  [
+   "shaft",
+   "Trục / cơ khí — nét đôi"
+  ],
+  [
+   "road",
+   "Vận tải đường bộ — xe"
+  ],
+  [
+   "rail",
+   "Vận tải đường sắt — tàu hỏa"
+  ],
+  [
+   "sea",
+   "Vận tải đường thủy — tàu / sà lan"
+  ]
+ ],
+ "sheets": [
+  [
+   "A4",
+   "A4 (297 × 210 mm)"
+  ],
+  [
+   "A3",
+   "A3 (420 × 297 mm)"
+  ],
+  [
+   "A2",
+   "A2 (594 × 420 mm)"
+  ],
+  [
+   "A1",
+   "A1 (841 × 594 mm)"
+  ],
+  [
+   "A0",
+   "A0 (1189 × 841 mm)"
+  ],
+  [
+   "ANSI_A",
+   "ANSI A — Letter (11 × 8.5 in)"
+  ],
+  [
+   "ANSI_B",
+   "ANSI B — Ledger (17 × 11 in)"
+  ],
+  [
+   "ANSI_C",
+   "ANSI C (22 × 17 in)"
+  ],
+  [
+   "ANSI_D",
+   "ANSI D (34 × 22 in)"
+  ],
+  [
+   "ANSI_E",
+   "ANSI E (44 × 34 in)"
+  ],
+  [
+   "ARCH_D",
+   "ARCH D (36 × 24 in)"
+  ]
+ ],
+ "tpl": [
+  [
+   "simple",
+   "[\"0\",\"1\"]"
+  ],
+  [
+   "iso",
+   "[\"0\",\"1\"]"
+  ],
+  [
+   "ansi",
+   "[\"0\",\"1\"]"
+  ],
+  [
+   "epc",
+   "[\"0\",\"1\"]"
+  ],
+  [
+   "frame",
+   "[\"0\",\"1\"]"
+  ]
+ ],
+ "shapes": {
+  "line": "Đường thẳng",
+  "arrow": "Mũi tên",
+  "rect": "Hình chữ nhật",
+  "ellipse": "Hình tròn / elip",
+  "poly": "Đa tuyến / đa giác",
+  "pen": "Nét bút tự do",
+  "circle": "Đường tròn",
+  "arc": "Cung tròn",
+  "dim": "Kích thước",
+  "hatch": "Mặt cắt / hatch",
+  "path": "Đường path Bézier"
+ },
+ "transport": [
+  "road",
+  "rail",
+  "sea"
+ ],
+ "quick": [
+  "Áp suất thiết kế",
+  "Nhiệt độ thiết kế",
+  "Áp suất vận hành",
+  "Nhiệt độ vận hành",
+  "Công suất",
+  "Lưu lượng",
+  "Thể tích",
+  "Đường kính × chiều cao",
+  "Vật liệu",
+  "Diện tích truyền nhiệt",
+  "Cột áp",
+  "Tốc độ quay",
+  "Điện áp",
+  "Tỷ số nén",
+  "Khối lượng"
+ ],
+ "fonts": [
+  [
+   "Arial",
+   "Arial, Helvetica, sans-serif"
+  ],
+  [
+   "Helvetica",
+   "Helvetica, Arial, sans-serif"
+  ],
+  [
+   "Segoe UI",
+   "'Segoe UI', Tahoma, Arial, sans-serif"
+  ],
+  [
+   "Calibri",
+   "Calibri, Carlito, Arial, sans-serif"
+  ],
+  [
+   "Tahoma",
+   "Tahoma, Verdana, sans-serif"
+  ],
+  [
+   "Verdana",
+   "Verdana, Geneva, sans-serif"
+  ],
+  [
+   "Arial Narrow",
+   "'Arial Narrow', 'Liberation Sans Narrow', Arial, sans-serif"
+  ],
+  [
+   "Times New Roman",
+   "'Times New Roman', Times, serif"
+  ],
+  [
+   "Georgia",
+   "Georgia, 'Times New Roman', serif"
+  ],
+  [
+   "Courier New",
+   "'Courier New', Courier, monospace"
+  ],
+  [
+   "Consolas",
+   "Consolas, 'Courier New', monospace"
+  ],
+  [
+   "Roboto",
+   "Roboto, Arial, sans-serif"
+  ],
+  [
+   "Comic Sans MS",
+   "'Comic Sans MS', 'Comic Sans', cursive"
+  ],
+  [
+   "ISO / kỹ thuật",
+   "ISOCPEUR, Osifont, 'Arial Narrow', Arial, sans-serif"
+  ]
+ ],
+ "fdefs": [
+  [
+   "0",
+   ""
+  ],
+  [
+   "1",
+   ""
+  ],
+  [
+   "2",
+   ""
+  ],
+  [
+   "3",
+   ""
+  ],
+  [
+   "4",
+   ""
+  ],
+  [
+   "5",
+   ""
+  ],
+  [
+   "6",
+   ""
+  ],
+  [
+   "7",
+   ""
+  ],
+  [
+   "8",
+   ""
+  ],
+  [
+   "9",
+   ""
+  ]
+ ],
+ "dashes": {
+  "": "Nét liền",
+  "dash": "Nét đứt",
+  "dot": "Chấm",
+  "dd": "Gạch chấm"
+ },
+ "units": [
+  [
+   "barg",
+   "{\"fam\":\"P\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "bara",
+   "{\"fam\":\"P\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "bar",
+   "{\"fam\":\"P\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "kPag",
+   "{\"fam\":\"P\",\"f\":0.01,\"sys\":\"S\"}"
+  ],
+  [
+   "kPaa",
+   "{\"fam\":\"P\",\"f\":0.01,\"sys\":\"S\"}"
+  ],
+  [
+   "kPa",
+   "{\"fam\":\"P\",\"f\":0.01,\"sys\":\"S\"}"
+  ],
+  [
+   "MPag",
+   "{\"fam\":\"P\",\"f\":10,\"sys\":\"S\"}"
+  ],
+  [
+   "MPaa",
+   "{\"fam\":\"P\",\"f\":10,\"sys\":\"S\"}"
+  ],
+  [
+   "MPa",
+   "{\"fam\":\"P\",\"f\":10,\"sys\":\"S\"}"
+  ],
+  [
+   "kg/cm²g",
+   "{\"fam\":\"P\",\"f\":0.980665,\"sys\":\"S\"}"
+  ],
+  [
+   "psig",
+   "{\"fam\":\"P\",\"f\":0.0689476,\"sys\":\"U\"}"
+  ],
+  [
+   "psia",
+   "{\"fam\":\"P\",\"f\":0.0689476,\"sys\":\"U\"}"
+  ],
+  [
+   "psi",
+   "{\"fam\":\"P\",\"f\":0.0689476,\"sys\":\"U\"}"
+  ],
+  [
+   "m³/h",
+   "{\"fam\":\"Lq\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "m3/h",
+   "{\"fam\":\"Lq\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "L/s",
+   "{\"fam\":\"Lq\",\"f\":3.6,\"sys\":\"S\"}"
+  ],
+  [
+   "L/min",
+   "{\"fam\":\"Lq\",\"f\":0.06,\"sys\":\"S\"}"
+  ],
+  [
+   "m³/d",
+   "{\"fam\":\"Lq\",\"f\":0.041666666666666664,\"sys\":\"S\"}"
+  ],
+  [
+   "m3/d",
+   "{\"fam\":\"Lq\",\"f\":0.041666666666666664,\"sys\":\"S\"}"
+  ],
+  [
+   "gpm",
+   "{\"fam\":\"Lq\",\"f\":0.227125,\"sys\":\"U\"}"
+  ],
+  [
+   "bbl/d",
+   "{\"fam\":\"Lq\",\"f\":0.006624458333333333,\"sys\":\"U\"}"
+  ],
+  [
+   "bpd",
+   "{\"fam\":\"Lq\",\"f\":0.006624458333333333,\"sys\":\"U\"}"
+  ],
+  [
+   "kbbl/d",
+   "{\"fam\":\"Lq\",\"f\":6.624458333333333,\"sys\":\"U\"}"
+  ],
+  [
+   "Sm³/h",
+   "{\"fam\":\"Gs\",\"f\":24,\"sys\":\"S\"}"
+  ],
+  [
+   "Sm3/h",
+   "{\"fam\":\"Gs\",\"f\":24,\"sys\":\"S\"}"
+  ],
+  [
+   "Sm³/d",
+   "{\"fam\":\"Gs\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "Sm3/d",
+   "{\"fam\":\"Gs\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "SCMD",
+   "{\"fam\":\"Gs\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "MSm³/d",
+   "{\"fam\":\"Gs\",\"f\":1000,\"sys\":\"S\"}"
+  ],
+  [
+   "MSCMD",
+   "{\"fam\":\"Gs\",\"f\":1000,\"sys\":\"S\"}"
+  ],
+  [
+   "MMSm³/d",
+   "{\"fam\":\"Gs\",\"f\":1000000,\"sys\":\"S\"}"
+  ],
+  [
+   "MMSCMD",
+   "{\"fam\":\"Gs\",\"f\":1000000,\"sys\":\"S\"}"
+  ],
+  [
+   "scfh",
+   "{\"fam\":\"Gs\",\"f\":0.6796032,\"sys\":\"U\"}"
+  ],
+  [
+   "scfd",
+   "{\"fam\":\"Gs\",\"f\":0.0283168,\"sys\":\"U\"}"
+  ],
+  [
+   "Mscfd",
+   "{\"fam\":\"Gs\",\"f\":28.3168,\"sys\":\"U\"}"
+  ],
+  [
+   "MMscfd",
+   "{\"fam\":\"Gs\",\"f\":28316.8,\"sys\":\"U\"}"
+  ],
+  [
+   "MMscf/d",
+   "{\"fam\":\"Gs\",\"f\":28316.8,\"sys\":\"U\"}"
+  ],
+  [
+   "Bscf/d",
+   "{\"fam\":\"Gs\",\"f\":28316800,\"sys\":\"U\"}"
+  ],
+  [
+   "kg/h",
+   "{\"fam\":\"Mf\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "t/h",
+   "{\"fam\":\"Mf\",\"f\":1000,\"sys\":\"S\"}"
+  ],
+  [
+   "kg/s",
+   "{\"fam\":\"Mf\",\"f\":3600,\"sys\":\"S\"}"
+  ],
+  [
+   "t/d",
+   "{\"fam\":\"Mf\",\"f\":41.666666666666664,\"sys\":\"S\"}"
+  ],
+  [
+   "lb/h",
+   "{\"fam\":\"Mf\",\"f\":0.45359237,\"sys\":\"U\"}"
+  ],
+  [
+   "klb/h",
+   "{\"fam\":\"Mf\",\"f\":453.59237,\"sys\":\"U\"}"
+  ],
+  [
+   "lb/s",
+   "{\"fam\":\"Mf\",\"f\":1632.93,\"sys\":\"U\"}"
+  ],
+  [
+   "klb/d",
+   "{\"fam\":\"Mf\",\"f\":18.899682083333335,\"sys\":\"U\"}"
+  ],
+  [
+   "mm",
+   "{\"fam\":\"Len\",\"f\":0.001,\"sys\":\"S\"}"
+  ],
+  [
+   "cm",
+   "{\"fam\":\"Len\",\"f\":0.01,\"sys\":\"S\"}"
+  ],
+  [
+   "m",
+   "{\"fam\":\"Len\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "km",
+   "{\"fam\":\"Len\",\"f\":1000,\"sys\":\"S\"}"
+  ],
+  [
+   "in",
+   "{\"fam\":\"Len\",\"f\":0.0254,\"sys\":\"U\"}"
+  ],
+  [
+   "ft",
+   "{\"fam\":\"Len\",\"f\":0.3048,\"sys\":\"U\"}"
+  ],
+  [
+   "mi",
+   "{\"fam\":\"Len\",\"f\":1609.344,\"sys\":\"U\"}"
+  ],
+  [
+   "m³",
+   "{\"fam\":\"Vol\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "m3",
+   "{\"fam\":\"Vol\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "L",
+   "{\"fam\":\"Vol\",\"f\":0.001,\"sys\":\"S\"}"
+  ],
+  [
+   "ft³",
+   "{\"fam\":\"Vol\",\"f\":0.0283168,\"sys\":\"U\"}"
+  ],
+  [
+   "ft3",
+   "{\"fam\":\"Vol\",\"f\":0.0283168,\"sys\":\"U\"}"
+  ],
+  [
+   "gal",
+   "{\"fam\":\"Vol\",\"f\":0.00378541,\"sys\":\"U\"}"
+  ],
+  [
+   "bbl",
+   "{\"fam\":\"Vol\",\"f\":0.158987,\"sys\":\"U\"}"
+  ],
+  [
+   "m²",
+   "{\"fam\":\"Area\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "m2",
+   "{\"fam\":\"Area\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "ft²",
+   "{\"fam\":\"Area\",\"f\":0.092903,\"sys\":\"U\"}"
+  ],
+  [
+   "ft2",
+   "{\"fam\":\"Area\",\"f\":0.092903,\"sys\":\"U\"}"
+  ],
+  [
+   "kg",
+   "{\"fam\":\"Mass\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "lb",
+   "{\"fam\":\"Mass\",\"f\":0.45359237,\"sys\":\"U\"}"
+  ],
+  [
+   "kW",
+   "{\"fam\":\"Pow\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "MW",
+   "{\"fam\":\"Pow\",\"f\":1000,\"sys\":\"S\"}"
+  ],
+  [
+   "hp",
+   "{\"fam\":\"Pow\",\"f\":0.7457,\"sys\":\"U\"}"
+  ],
+  [
+   "kg/m³",
+   "{\"fam\":\"Den\",\"f\":1,\"sys\":\"S\"}"
+  ],
+  [
+   "lb/ft³",
+   "{\"fam\":\"Den\",\"f\":16.0185,\"sys\":\"U\"}"
+  ],
+  [
+   "°C",
+   "{\"fam\":\"T\",\"sys\":\"S\"}"
+  ],
+  [
+   "degC",
+   "{\"fam\":\"T\",\"sys\":\"S\"}"
+  ],
+  [
+   "°F",
+   "{\"fam\":\"T\",\"sys\":\"U\"}"
+  ],
+  [
+   "degF",
+   "{\"fam\":\"T\",\"sys\":\"U\"}"
+  ],
+  [
+   "K",
+   "{\"fam\":\"T\",\"sys\":\"S\"}"
+  ]
+ ]
+}
