@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PFD Studio Rev.8 — Vẽ Process Flow Diagram Dầu Khí</title>
+<style>
+:root{--ui:1;--bg:#eef1f5;--panel:#fff;--text:#17202a;--muted:#53677b;--line:#dbe2ea;--line2:#cbd5e1;--inbg:#fff;--btn:#fff;--btnh:#eef6ff;--hdr:#0f2a44;--hdrbtn:#173a5c;--hdrbtnh:#21507c;--hdrline:#2a557f;--accent:#1677ff;--soft:#f8fafc;--th:#f1f5f9;--palbg:#fff;--tip:#0f2a44;--warn:#fff7e6;--warnb:#f59e0b;--cat:#52667a;--lab:#40566b;--kbd:#eef1f5;--toolbg:rgba(255,255,255,.97);--stat:rgba(15,42,68,.94);--danger:#b42318;--act:#0f2a44}
+html[data-theme=dark]{--bg:#0d1319;--panel:#151d26;--text:#e6edf3;--muted:#9fb0c3;--line:#2a3745;--line2:#3a4a5b;--inbg:#0f161d;--btn:#1c2733;--btnh:#26374a;--hdr:#0a1119;--hdrbtn:#16212d;--hdrbtnh:#223246;--hdrline:#2e4258;--accent:#4c9aff;--soft:#111921;--th:#1b2632;--tip:#223246;--warn:#3a2d0f;--warnb:#d97706;--cat:#9fb0c3;--lab:#b8c6d4;--kbd:#223040;--toolbg:rgba(21,29,38,.97);--stat:rgba(5,10,15,.94);--danger:#ff8a80;--act:#4c9aff}
+*{box-sizing:border-box}
+html{font-size:calc(14px*var(--ui))}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:1rem;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+header{background:var(--hdr);color:#fff;padding:.4rem .6rem;display:flex;gap:.35rem;align-items:center;flex-wrap:wrap}
+header b{font-size:1.2rem}header .sub{opacity:.85;font-size:.8rem}
+.vsep{width:1px;height:1.5rem;background:var(--hdrline);margin:0 .1rem}
+.btn{background:var(--btn);color:var(--text);border:1px solid var(--line2);border-radius:.55rem;padding:.33rem .55rem;cursor:pointer;font:inherit;font-size:.9rem;line-height:1.2}
+.btn:hover{background:var(--btnh)}
+.btn:disabled{opacity:.45;cursor:default}
+.btn:focus-visible,.pal:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #f59e0b;outline-offset:1px}
+.btn.primary{background:#1677ff;color:#fff;border-color:#1677ff}
+.btn.danger{color:var(--danger)}
+.btn.active{background:var(--act);color:#fff;border-color:var(--act)}
+html[data-theme=dark] .btn.active{color:#0a1119}
+header .btn{background:var(--hdrbtn);color:#fff;border-color:var(--hdrline);padding:.3rem .5rem;font-size:.86rem}header .btn:hover{background:var(--hdrbtnh)}header .btn.primary{background:#1677ff;border-color:#1677ff}header .btn.active{background:#fff;color:#0f2a44}
+main{flex:1;display:flex;min-height:0}
+aside{background:var(--panel);display:flex;flex-direction:column;overflow:hidden}
+aside.left{width:19rem;border-right:1px solid var(--line)}
+aside.right{width:23rem;border-left:1px solid var(--line);padding:.8rem;overflow:auto}
+aside.hidden{display:none}
+.pal-search{padding:.6rem}.pal-search input{width:100%}
+#palette{overflow:auto;padding:0 .6rem .8rem;flex:1}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.pal{border:1px solid var(--line);border-radius:.6rem;padding:.4rem .3rem;background:var(--palbg);color:var(--text);cursor:grab;text-align:center;font-size:.82rem;line-height:1.25}
+.pal:hover{border-color:var(--accent);box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.pal svg{width:100%;height:2.9rem;pointer-events:none}
+.canvasWrap{flex:1;position:relative;background:#cfd8e3;overflow:hidden;min-width:0}
+#board{width:100%;height:100%;display:block;cursor:default;touch-action:none;user-select:none;-webkit-user-select:none}
+.toolbar{position:absolute;top:.5rem;left:.5rem;background:var(--toolbg);border:1px solid var(--line);border-radius:.8rem;padding:.3rem;display:flex;gap:.25rem;box-shadow:0 4px 18px rgba(0,0,0,.18);z-index:5;flex-wrap:wrap;max-width:calc(100% - 1rem);align-items:center}
+.toolbar .btn{padding:.28rem .45rem;font-size:.86rem}
+.toolbar .vsep{background:var(--line2)}
+.status{position:absolute;left:.6rem;bottom:.6rem;background:var(--stat);color:#fff;border-radius:.6rem;padding:.45rem .7rem;font-size:.9rem;z-index:5;max-width:calc(100% - 1.2rem)}
+label{font-size:.85rem;font-weight:600;color:var(--lab);display:block;margin:.6rem 0 .25rem}
+input,select,textarea{width:100%;padding:.42rem .5rem;border:1px solid var(--line2);border-radius:.5rem;font:inherit;font-size:.92rem;background:var(--inbg);color:var(--text)}
+input[type=checkbox]{width:auto;margin-right:.4rem}
+input[type=range]{padding:0}
+input[type=color]{padding:.1rem;height:2.1rem;min-width:3rem}
+textarea{resize:vertical}
+.chk{display:flex;align-items:center;font-weight:500;margin:.35rem 0}
+.row{display:flex;gap:.45rem;align-items:center}.row>*{flex:1;min-width:0}
+.row>.usel{flex:0 0 5.4rem}
+.udgrid{display:grid;grid-template-columns:1fr 8rem;gap:.3rem .6rem;align-items:center;margin:.4rem 0}.udet{margin:.5rem 0}.udet>summary{cursor:pointer;font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:.3rem;margin:.3rem 0}.chip{border:1px solid var(--line2);background:var(--btn);color:var(--text);border-radius:999px;padding:.15rem .6rem;font-size:.82rem;cursor:pointer}.chip.off{opacity:.55;text-decoration:line-through}.chip:disabled{opacity:.5;cursor:not-allowed}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin:.4rem 0}
+.hint{font-size:.85rem;color:var(--muted);line-height:1.55}
+.kbd{background:var(--kbd);border:1px solid var(--line2);border-bottom-width:2px;border-radius:5px;padding:0 .3rem;font-size:.8rem}
+.ph{margin:.1rem 0 .3rem;font-size:1.1rem}
+.sect{font-weight:700;font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--cat);margin:.9rem 0 .1rem;border-top:1px solid var(--line);padding-top:.5rem}
+.mini{display:flex;flex-direction:column;font-size:.78rem;font-weight:600;margin:0}
+.calc{background:var(--soft);border:1px solid var(--line);border-radius:.5rem;padding:.35rem .5rem;margin:.35rem 0;font-size:.85rem}
+.warnbox{background:var(--warn);border:1px solid var(--warnb);border-radius:.5rem;padding:.4rem .55rem;margin-bottom:.5rem;font-size:.88rem}
+.portrow{border:1px solid var(--line);border-radius:.5rem;padding:.35rem;margin:.35rem 0;display:flex;flex-direction:column;gap:.3rem}
+details{border-top:1px solid var(--line);margin-top:.8rem;padding-top:.5rem}
+summary{cursor:pointer;font-weight:700;padding:.2rem 0}
+.node{cursor:move}
+.port{fill:var(--inbg);stroke:#1677ff;stroke-width:2;cursor:crosshair;opacity:0}
+.port.u{stroke:#f59e0b;fill:#fff7e6}
+.node:hover .port,.node.selected .port,.connecting .port,.showports .port{opacity:1}
+.showports .port:not(:hover){opacity:.6}
+.port:hover{fill:#1677ff}
+.shp{cursor:move}
+.shh{fill:#fff;stroke:#1677ff;stroke-width:2;cursor:pointer}
+.shh.att{fill:#22c55e;stroke:#15803d}
+.eend{cursor:move}
+.selbox{display:none;fill:none;stroke:#1677ff;stroke-width:2;stroke-dasharray:6 4;vector-effect:non-scaling-stroke}
+.node.selected .selbox{display:inline}
+.ehandle{cursor:move}
+.tempEdge{fill:none;stroke:#1677ff;stroke-width:2.5;stroke-dasharray:6 4;pointer-events:none}
+#marq{fill:rgba(22,119,255,.12);stroke:#1677ff;stroke-width:1.5;stroke-dasharray:5 3;pointer-events:none}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:50}
+.modal.open{display:flex}
+.card{background:var(--panel);color:var(--text);border-radius:14px;width:min(94vw,780px);max-height:90vh;overflow:auto;padding:1.2rem;line-height:1.55}
+.card.wide{width:min(97vw,1280px)}
+.card h2{margin:.1rem 0 .6rem}
+table.t{border-collapse:collapse;width:100%;font-size:.88rem}
+table.t th,table.t td{border:1px solid var(--line);padding:.22rem .35rem;text-align:left;vertical-align:middle}
+table.t th{background:var(--th);position:sticky;top:0;z-index:1}
+table.t input,table.t select{padding:.22rem .3rem;border-radius:5px;min-width:3.5rem}
+table.t tr.clk{cursor:pointer}table.t tr.clk:hover{background:var(--btnh)}
+table.t tr.cur{background:var(--btnh);font-weight:700}
+.desc{white-space:pre-wrap;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:.8rem;max-height:55vh;overflow:auto}
+.mbar{display:flex;gap:.5rem;flex-wrap:wrap;margin:.7rem 0 0;align-items:center}
+.tip{position:fixed;z-index:60;max-width:22rem;background:var(--tip);color:#fff;border-radius:.5rem;padding:.45rem .65rem;font-size:.85rem;line-height:1.45;pointer-events:none;box-shadow:0 6px 22px rgba(0,0,0,.3);display:none;white-space:pre-line}
+.tip b{color:#ffd28a}
+#palette details{border-top:0;margin-top:.35rem;padding-top:0}
+#palette summary{font-weight:700;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--cat);padding:.35rem 0}
+.palbar{display:flex;gap:.3rem;margin:.45rem 0 .3rem}.palbar .btn{flex:1;padding:.25rem .4rem;font-size:.78rem}.palf{display:flex;flex-wrap:wrap;gap:.25rem}.chip{border:1px solid var(--line);border-radius:1rem;padding:.12rem .5rem;font-size:.74rem;background:var(--palbg);color:var(--text);cursor:pointer}.chip[aria-pressed="true"]{background:var(--accent,#1677ff);color:#fff;border-color:var(--accent,#1677ff)}.chip:focus-visible{outline:3px solid #f59e0b;outline-offset:1px}.hc .chip{border:2px solid currentColor}.pal .subt{font-weight:600;margin-top:.1rem}.pal .onev{font-size:.72rem;opacity:.8;margin-top:.2rem}
+.pal select{width:100%;max-width:100%}
+.pal select{margin-top:.25rem;padding:.15rem .2rem;font-size:.75rem}
+.sev-w{color:#b45309;font-weight:700}.sev-e{color:var(--danger);font-weight:700}.sev-i{color:var(--accent);font-weight:700}
+.pplay{display:grid;grid-template-columns:19rem 1fr;gap:1rem}
+.ppview-wrap{background:#8b97a5;border-radius:8px;padding:.8rem;display:flex;align-items:center;justify-content:center;min-height:50vh;max-height:68vh;overflow:auto}
+#ppView{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.4);width:100%;max-height:64vh;max-width:100%}
+#ppView svg{display:block;width:100%;height:100%}
+.hv{display:block}.he{display:none}
+.helpcard{width:min(96vw,980px)}
+.htabs{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.7rem;position:sticky;top:-1.2rem;background:var(--panel);padding:.3rem 0;z-index:2}
+.htab.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.hbody h3{margin:.9rem 0 .35rem;font-size:1rem}
+.hbody ul{margin:.2rem 0 .4rem 1.1rem;padding:0}
+table.helpk td:first-child{white-space:nowrap;width:1%}
+details.faq{border:1px solid var(--line);border-radius:8px;padding:.35rem .7rem;margin:.4rem 0}
+details.faq summary{cursor:pointer;font-weight:700}
+html[lang=en] .hv{display:none}html[lang=en] .he{display:block}
+#printRoot{display:none}
+/* tương phản cao */
+body.hc{background:#fff;color:#000}
+.hc aside,.hc .card{background:var(--panel)}
+.hc .btn{border:2px solid currentColor}.hc .btn.primary{background:#0040c0;color:#fff}
+.hc input,.hc select,.hc textarea{border:2px solid currentColor}
+.hc .hint,.hc label{color:inherit}
+.hc .pal{border:2px solid currentColor}
+@media (max-width:900px){aside.left{width:12rem}aside.right{width:16rem}.pplay{grid-template-columns:1fr}}
+
+/* ---- module Sơ đồ ---- */
+
+.dgblk{padding:.5rem .6rem;border-top:1px solid var(--line)}
+.dggrid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem;padding:.35rem .5rem}
+.dgpal{display:flex;flex-direction:column;align-items:center;gap:.2rem;padding:.35rem .2rem;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);font:inherit;font-size:.74rem;cursor:grab;text-align:center;line-height:1.15}
+.dgpal:hover,.dgpal:focus-visible{border-color:var(--accent);outline:2px solid var(--accent)}
+.dgpal svg{max-width:100%;height:auto;min-height:30px}
+.dgcol{display:flex;gap:.5rem;align-items:center}
+.dgcol input[type=color]{width:3rem;height:2.1rem;padding:0;border:1px solid var(--line);border-radius:6px;background:none}
+.dgsty{display:grid;grid-template-columns:repeat(6,1fr);gap:.3rem;margin:.4rem 0}
+.dgsw{height:2rem;border:2px solid;border-radius:6px;font-weight:700;cursor:pointer;font-size:.8rem}
+.dgsw:hover,.dgsw:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.row4{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem}
+</style></head>
+<body>
+<header>
+ <div><b>🛢️ <span id="appName">PFD Studio</span></b> <span class="sub" id="appSub">Rev.8 • Vẽ Process Flow Diagram dầu khí • 1 file, không cần cài đặt</span></div>
+ <span style="flex:1"></span>
+ <button class="btn" onclick="toggleSide('left')" title="Ẩn/hiện thư viện thiết bị / hình khối">☰ <span class="pfdonly">Thư viện</span></button>
+ <button class="btn" onclick="toggleSide('right')" title="Ẩn/hiện bảng thuộc tính">⚙ Thuộc tính</button>
+ <span class="vsep"></span>
+ <button class="btn" onclick="newDrawing()">📄 Mới</button>
+ <button class="btn" onclick="$('loadFile').click()">📂 Mở</button>
+ <input id="loadFile" type="file" accept=".json,application/json" hidden onchange="loadFile(event)">
+ <button class="btn" onclick="saveJSON()">💾 Lưu</button>
+ <button class="btn" onclick="openJSON()" title="Xem / sao chép / dán nội dung JSON">{ } JSON</button>
+ <span class="vsep"></span>
+ <button class="btn pfdonly" onclick="openStreams()">📋 Bảng dòng</button>
+ <button class="btn pfdonly" onclick="openChecks()" title="Kiểm tra lỗi bản vẽ">✅ Kiểm tra</button>
+ <button class="btn pfdonly" onclick="openEquip()">🧰 Thiết bị</button>
+ <button class="btn pfdonly" onclick="openDescribe()" title="Mô tả bản vẽ bằng chữ, dùng cho đọc to / text-to-speech">🔊 Mô tả</button>
+ <span class="vsep"></span>
+ <button class="btn" onclick="exportSVG()">⬇ SVG</button>
+ <button class="btn" onclick="exportPNG()">⬇ PNG</button>
+ <button class="btn primary" onclick="openPrint()" title="Xem trước, chọn khổ giấy, in hoặc tải PDF (Ctrl+P)">🖨 In / PDF</button>
+ <span class="vsep"></span>
+ <button class="btn" id="themeBtn" onclick="cycleTheme()" title="Đổi giao diện: tự động / sáng / tối" aria-label="Đổi giao diện sáng tối">🌓</button>
+ <button class="btn nt" id="langBtn" onclick="toggleLang()" title="Ngôn ngữ / Language: VI ⇄ EN" aria-label="Language">VI</button>
+ <button class="btn nt pfdonly" id="unitBtn" onclick="setUnits(state.meta.units==='SI'?'US':'SI')" title="Hệ đơn vị: SI ⇄ US" aria-label="Units">SI</button>
+ <button class="btn" onclick="openSettings()" title="Cài đặt giao diện">⚙ Cài đặt</button>
+ <button class="btn nt" onclick="setUI(-0.1)" title="Giảm cỡ chữ giao diện" aria-label="Giảm cỡ chữ">A−</button>
+ <button class="btn nt" onclick="setUI(0.1)" title="Tăng cỡ chữ giao diện" aria-label="Tăng cỡ chữ">A+</button>
+ <button class="btn" id="hcBtn" onclick="toggleHC()" title="Bật/tắt chế độ tương phản cao, nét vẽ đậm">◐ Tương phản</button>
+ <button class="btn" onclick="toggleHelp(true)" title="Hướng dẫn, phím tắt, hỏi đáp, thông tin phần mềm (phím ?)">? Thông tin / Trợ giúp</button>
+</header>
+<main>
+<aside class="left" id="asideL">
+ <div class="pal-search pfdonly"><input id="search" placeholder="Tìm thiết bị: separator, pump, valve..." aria-label="Tìm thiết bị" oninput="renderPalette()"><div id="palBar"></div></div>
+ <div id="palette" class="pfdonly"></div>
+ <div style="padding:.6rem;border-top:1px solid var(--line)" class="hint pfdonly"><b>Nối ống:</b> kéo từ chấm xanh của thiết bị này thả vào chấm xanh (hoặc thân) thiết bị kia — không cần đổi công cụ. Cần thêm cổng nối? Bấm phím <span class="kbd nt">P</span> rồi bấm lên thiết bị.</div>
+</aside>
+<section class="canvasWrap" id="wrap">
+ <div class="toolbar" role="toolbar" aria-label="Công cụ vẽ">
+  <button class="btn tool active" data-tool="select" onclick="setTool('select')" title="Chọn / kéo (V)">↖ Chọn</button>
+  <button class="btn tool pfdonly" data-tool="connect" onclick="setTool('connect')" title="Nối ống (C)">🔗 Nối ống</button>
+  <button class="btn tool pfdonly" data-tool="open" onclick="setTool('open')" title="Ống hở / mũi tên công nghệ (E): kéo từ điểm bất kỳ hoặc từ điểm nối thiết bị">⤳ Ống hở</button>
+  <button class="btn tool pfdonly" data-tool="port" onclick="setTool('port')" title="Thêm điểm nối ống cho thiết bị (P)">⊕ Điểm nối</button>
+  <button class="btn tool pfdonly" data-tool="text" onclick="setTool('text')" title="Thêm chữ (T)">T Chữ</button>
+  <button class="btn tool" data-tool="pan" onclick="setTool('pan')" title="Di chuyển khung nhìn (H hoặc giữ Space)">✋ Pan</button>
+  <span class="vsep"></span>
+  <button class="btn tool pfdonly" data-tool="line" onclick="setTool('line')" title="Vẽ đường thẳng (L) — giữ Shift để vuông góc / 45°">╱ Đường</button>
+  <button class="btn tool pfdonly" data-tool="arrow" onclick="setTool('arrow')" title="Vẽ mũi tên (A)">➜ Mũi tên</button>
+  <button class="btn tool pfdonly" data-tool="rect" onclick="setTool('rect')" title="Vẽ hình chữ nhật (B)">▭ Hộp</button>
+  <button class="btn tool pfdonly" data-tool="ellipse" onclick="setTool('ellipse')" title="Vẽ hình tròn / elip (O)">◯ Tròn</button>
+  <button class="btn tool pfdonly" data-tool="poly" onclick="setTool('poly')" title="Vẽ đa tuyến / đa giác (Y)">⟋ Đa tuyến</button>
+  <button class="btn tool pfdonly" data-tool="pen" onclick="setTool('pen')" title="Bút vẽ tay tự do (D)">✏ Bút</button>
+  <span class="vsep"></span>
+  <button class="btn" id="btnUndo" onclick="undo()" title="Hoàn tác (Ctrl+Z)" aria-label="Hoàn tác">↩</button>
+  <button class="btn" id="btnRedo" onclick="redo()" title="Làm lại (Ctrl+Y)" aria-label="Làm lại">↪</button>
+  <button class="btn" onclick="openHist()" title="Lịch sử thao tác — quay về bất kỳ bước nào">🕘</button>
+  <span class="vsep"></span>
+  <button class="btn nt" onclick="zoomBy(1.2)" title="Phóng to" aria-label="Phóng to">＋</button>
+  <button class="btn nt" onclick="zoomBy(0.83)" title="Thu nhỏ" aria-label="Thu nhỏ">－</button>
+  <button class="btn" onclick="fitView()" title="Vừa khung (Ctrl+0)">⛶ Fit</button>
+  <span id="zoomLbl" class="hint nt" style="min-width:3rem;text-align:center">100%</span>
+  <button class="btn pfdonly" id="btnPorts" onclick="toggleShowPorts()" title="Luôn hiện mọi điểm nối ống">◉ Cổng</button>
+  <span class="vsep"></span>
+  <button class="btn primary pfdonly" onclick="fitToSheet()" title="Co/giãn toàn bộ (hoặc phần đang chọn) cho vừa khổ giấy">⤢ Vừa khổ giấy</button>
+  <button class="btn pfdonly" onclick="scaleSel(0.9)" title="Thu nhỏ hệ thống 10%">◿ −10%</button>
+  <button class="btn pfdonly" onclick="scaleSel(1.1)" title="Phóng to hệ thống 10%">◥ +10%</button>
+  <span class="vsep"></span>
+  <button class="btn danger" onclick="deleteSelected()" title="Xoá mục đang chọn (Delete)">🗑 Xoá</button>
+ </div>
+ <svg id="board" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bản vẽ PFD">
+  <defs><g id="dynDefs"></g></defs>
+  <g id="viewport"><g id="gSheet"></g><g id="gDg"></g><g id="gShB"></g><g id="gEdges"></g><g id="gNodes"></g><g id="gShF"></g><g id="gTop"><g id="gHand"></g><g id="gDraft" pointer-events="none"></g><rect id="marq" display="none"/><path id="tempEdge" class="tempEdge" display="none"/></g></g>
+ </svg>
+ <div class="status" id="status" role="status" aria-live="polite">Sẵn sàng — bấm hoặc kéo thiết bị từ thư viện vào bản vẽ.</div>
+</section>
+<aside class="right" id="asideR">
+ <h3 class="ph" style="font-size:1.15rem">Thuộc tính</h3>
+ <div id="props"></div>
+  <details open class="pfdonly"><summary>Bản vẽ &amp; khung tên</summary>
+  <label for="m_title">Tiêu đề bản vẽ</label><input id="m_title" data-meta="title">
+  <label for="m_project">Dự án / Hệ thống</label><input id="m_project" data-meta="project">
+  <div class="row"><div><label for="m_client">Chủ đầu tư</label><input id="m_client" data-meta="client"></div><div><label for="m_company">Công ty / Chủ sở hữu</label><input id="m_company" data-meta="company"></div></div>
+  <div class="row"><div><label for="m_rev">Revision</label><input id="m_rev" data-meta="rev"></div><div><label for="m_doc">Số bản vẽ</label><input id="m_doc" data-meta="docNo"></div></div>
+  <div class="row"><div><label for="m_by">Người vẽ</label><input id="m_by" data-meta="drawnBy"></div><div><label for="m_chk">Kiểm tra</label><input id="m_chk" data-meta="checkedBy"></div></div>
+  <div class="row"><div><label for="m_app">Phê duyệt</label><input id="m_app" data-meta="approvedBy"></div><div><label for="m_date">Ngày</label><input id="m_date" data-meta="date"></div></div>
+  <div class="row"><div><label for="m_scale">Tỷ lệ</label><input id="m_scale" data-meta="scaleTxt"></div><div><label for="m_sno">Tờ số</label><input id="m_sno" data-meta="sheetNo"></div><div><label for="m_sof">Tổng số tờ</label><input id="m_sof" data-meta="sheetOf"></div></div>
+  <label for="m_dtype">Loại tài liệu</label><input id="m_dtype" data-meta="docType">
+  <button class="btn" style="width:100%;margin-top:.5rem" onclick="openRevs()">📝 Bảng revision…</button>
+ </details>
+ <details open><summary>Khổ giấy &amp; mẫu bản in</summary>
+  <label for="m_sheet">Khổ giấy</label><select id="m_sheet" data-meta="sheet"></select>
+  <label for="m_orient">Hướng giấy</label>
+  <select id="m_orient" data-meta="orient"><option value="landscape">Ngang</option><option value="portrait">Dọc</option></select>
+  <label for="m_tpl">Mẫu khung tên / khung viền</label><select id="m_tpl" data-meta="template"></select>
+  <label for="m_tbl">Ngôn ngữ khung tên</label>
+  <select id="m_tbl" data-meta="tbLang"><option value="auto">Theo ngôn ngữ giao diện</option><option value="vi">Tiếng Việt</option><option value="en">English</option></select>
+  <label class="chk"><input type="checkbox" data-meta="showSheet">Hiện khung giấy + khung tên</label>
+  <button class="btn primary" style="width:100%;margin-top:.5rem" onclick="openPrint()">🖨 Xem trước &amp; in / PDF…</button>
+ </details>
+ <details><summary>Hiển thị</summary>
+  <label class="chk pfdonly"><input type="checkbox" data-meta="showProps">Hiện thông số dưới thiết bị</label>
+  <label class="chk pfdonly"><input type="checkbox" data-meta="colorByPhase">Tô màu đường ống theo pha</label>
+  <label class="chk pfdonly"><input type="checkbox" data-meta="showTable">Hiện bảng dòng trên bản vẽ</label>
+  <label class="chk pfdonly"><input type="checkbox" data-meta="showTitles">Hiện tên / mô tả thiết bị (tắt = chỉ hiện tag)</label>
+  <label for="m_leg" class="pfdonly">Vị trí chú thích màu (legend)</label>
+  <select id="m_leg" class="pfdonly" data-meta="legendPos"><option value="bl">Góc dưới trái (trên bảng dòng)</option><option value="br">Góc dưới phải (trên khung tên)</option><option value="tl">Góc trên trái</option><option value="tr">Góc trên phải</option><option value="off">Không hiện</option></select>
+  <label class="chk"><input type="checkbox" data-meta="grid">Hiện lưới</label>
+  <label class="chk pfdonly"><input type="checkbox" data-meta="snap">Bắt dính lưới 10</label>
+  <label class="chk pfdonly"><input type="checkbox" data-meta="hops">Vòng cung nhảy khi ống giao nhau</label>
+  <label class="chk"><input type="checkbox" id="optTips" onchange="setTips(this.checked)">Hiện tooltip khi rê chuột</label>
+  <label for="m_pl" class="pfdonly">Nhãn quy cách ống trên bản vẽ</label>
+  <select id="m_pl" class="pfdonly" data-meta="pipeLabel"><option value="none">Không hiện</option><option value="size">Chỉ size</option><option value="sch">Size + schedule</option><option value="full">Size + schedule + vật liệu + class</option></select>
+  <label for="m_units" class="pfdonly">Hệ đơn vị</label>
+  <select id="m_units" class="pfdonly" data-meta="units"><option value="SI">SI (bar, °C, m, m³…)</option><option value="US">US (psi, °F, ft, bbl…)</option></select>
+ </details>
+ <details class="pfdonly"><summary>Nét vẽ &amp; cỡ chữ</summary>
+  <label for="m_lineMode">Độ dày nét / cỡ chữ theo</label>
+  <select id="m_lineMode" data-meta="lineMode"><option value="fixed">Cố định (không đổi theo khổ giấy)</option><option value="sheet">Tỷ lệ theo khổ giấy (A4=1×, A3=1.4×, A2=2×)</option></select>
+  <label for="m_lw">Hệ số độ dày nét: <span id="m_lwV" class="nt"></span></label><input id="m_lw" data-meta="lw" type="range" min="0.5" max="3" step="0.1">
+  <label for="m_fs">Hệ số cỡ chữ nhãn: <span id="m_fsV" class="nt"></span></label><input id="m_fs" data-meta="fs" type="range" min="0.6" max="3" step="0.1">
+  <button class="btn" style="width:100%;margin-top:.5rem" onclick="openFonts()">🔤 Font chữ &amp; cỡ chữ…</button>
+  <label for="m_fit" class="pfdonly">Khi “Vừa khổ giấy”</label>
+  <select id="m_fit" class="pfdonly" data-meta="fitMode"><option value="sym">Co giãn cả ký hiệu lẫn khoảng cách</option><option value="pos">Chỉ co giãn khoảng cách (giữ cỡ ký hiệu)</option></select>
+  <div class="grid2 pfdonly"><button class="btn primary" onclick="fitToSheet()">⤢ Vừa khổ giấy</button><button class="btn" onclick="resetScale()">↺ Trả cỡ ký hiệu về 1×</button></div>
+ </details>
+ <details class="pfdonly"><summary>Bố trí &amp; căn chỉnh</summary>
+  <div id="layoutBox"></div>
+ </details>
+ <details class="pfdonly"><summary>Mẫu bản vẽ có sẵn</summary>
+  <select id="templateSel" aria-label="Chọn mẫu"><option value="sep">1 — Tách 3 pha + bơm dầu + nén khí</option><option value="gas">2 — Nén khí + làm khô TEG</option><option value="crude">3 — Ổn định dầu thô</option><option value="turbo">4 — Turbine hơi HP/LP dẫn động máy nén 2 cấp</option><option value="chain">5 — Chuỗi cung ứng khí (giàn → nhà máy → LNG / tiêu thụ)</option><option value="blank">Trống</option></select>
+  <button class="btn primary" style="width:100%;margin-top:.5rem" onclick="loadTemplate($('templateSel').value)">Nạp mẫu (có thể hoàn tác)</button>
+ </details>
+</aside>
+</main>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<div class="modal" id="mChecks"><div class="card wide" role="dialog" aria-label="Kiểm tra bản vẽ"><h2>Kiểm tra bản vẽ</h2>
+ <div class="hint" id="chkSum"></div>
+ <div style="overflow:auto;max-height:56vh;margin-top:.5rem"><table class="t" id="chkTbl"></table></div>
+ <div class="mbar"><button class="btn" onclick="openChecks()">🔄 Kiểm tra lại</button><button class="btn" onclick="copyText($('chkTbl').innerText)">📋 Sao chép</button><span style="flex:1"></span><button class="btn primary" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="help"><div class="card helpcard" role="dialog" aria-label="Thông tin / Trợ giúp">
+<div class="htabs nt" id="hTabs" role="tablist"></div>
+<div id="hBody" class="hbody"></div>
+<div id="hGuide" class="hbody">
+<div class="hv nt"><h2>Hướng dẫn nhanh — PFD Studio Rev.8</h2>
+<p><b>Thêm thiết bị:</b> bấm vào thiết bị ở thư viện (hoặc kéo thả vào bản vẽ). Ô tìm kiếm tìm cả tên tiếng Anh và tên kiểu vẽ. Thư viện có thêm turbine hơi HP/MP/LP, máy nén 2–3 cấp, hạ tầng chuỗi cung ứng khí (giàn, nhà máy, trạm nén, LNG, tiêu thụ…) và phương tiện vận tải (xe bồn, tàu hỏa, tàu, container).</p>
+<p><b>Nối ống:</b> kéo từ chấm xanh của thiết bị nguồn thả vào chấm xanh hoặc thân thiết bị đích. Ống tự đi vuông góc và có mũi tên chiều dòng. Đường nối tự đổi loại: tín hiệu (thiết bị đo), trục cơ khí (cổng SHAFT), đường bộ / sắt / thủy (khi nối với xe, tàu hỏa, tàu).</p>
+<p><b>Thêm điểm nối ống cho thiết bị:</b> chọn thiết bị → mục “Điểm nối ống” có nút ＋Trên / Dưới / Trái / Phải; hoặc bấm phím <span class="kbd">P</span> rồi bấm đúng vị trí cần trên thiết bị. Mỗi cổng thêm có tên, cạnh, vị trí và độ nhô ra; giữ <span class="kbd">Alt</span> và kéo chấm cam để dời cổng.</p>
+<p><b>Quy cách ống:</b> chọn đường ống → mục “Quy cách ống”: tiêu chuẩn (ASME B36.10M / B36.19M, ISO metric, tube BWG, tubing, đồng, HDPE…), size, schedule (danh sách đầy đủ), vật liệu (~20 loại + “Khác”) và pipe class. Hệ thống tính OD, độ dày, ID và khối lượng.</p>
+<p><b>Thông số thiết bị:</b> ô nhập tự do, mỗi dòng một thông số; có danh sách tên thông số thường dùng để chèn nhanh.</p>
+<p><b>Vẽ tự do:</b> thanh công cụ có Đường (L), Mũi tên (A), Hộp (B), Tròn (O), Đa tuyến (Y), Bút (D). Giữ Shift để vẽ thẳng / vuông / tròn đều. Chọn hình để đổi màu, độ dày, kiểu nét, đầu mũi tên, màu tô, lớp trước / sau thiết bị.</p>
+<p><b>Màu, nét và trong suốt cho thiết bị:</b> chọn thiết bị → mục “Màu nền &amp; viền thiết bị”: bật tô màu (fill), đổi màu viền, độ dày viền (0 = không viền), nét liền / đứt / chấm và độ trong suốt. Chọn nhiều thiết bị để đổi cùng lúc; nút “Mặc định” trả về kiểu gốc. Hình vẽ thêm cũng có “Độ trong suốt” và viền ẩn (độ dày 0).</p>
+<p><b>Ống hở / mũi tên công nghệ:</b> bấm nút “⤳ Ống hở” hoặc phím <span class="kbd">E</span>, kéo từ chỗ bất kỳ (hoặc từ điểm nối thiết bị). Ống tự bẻ góc vuông; đầu thả trên điểm nối sẽ gắn vào thiết bị, thả ra ngoài thì để hở — kéo ô vuông ở đầu hở để dời hoặc gắn sau. Giữ <span class="kbd">Alt</span> để tắt hút điểm nối.</p>
+<p><b>Mũi tên hai chiều &amp; cỡ đầu mũi tên:</b> chọn ống → mục “Mũi tên chỉ dòng chảy”: thêm mũi tên ở đầu ống, ẩn mũi tên cuối, chỉnh cỡ 0,5–3 lần.</p>
+<p><b>Đường / mũi tên dính vào thiết bị:</b> khi vẽ Đường (L) hoặc Mũi tên (A), đầu gần điểm nối sẽ tự hút vào và đi theo khi thiết bị di chuyển; kéo chấm đầu mút ra xa để tách. Có thể chỉnh cỡ đầu mũi tên trong bảng thuộc tính.</p>
+<p><b>Biến hình vẽ thành thiết bị tuỳ chỉnh:</b> chọn hộp / tròn / đa tuyến → bấm “⚙ Thêm điểm nối → biến thành thiết bị”; sau đó dùng phím <span class="kbd">P</span> thêm điểm nối ống như thiết bị thường. Công cụ Điểm nối (P) bấm lên hình vẽ cũng tự chuyển đổi.</p>
+<p><b>Đổi chỗ nối của ống:</b> bấm chọn đường ống — ở hai đầu hiện ô vuông (cam = đang gắn vào thiết bị, xanh = đầu hở). Kéo ô vuông sang cổng / thiết bị khác để đổi chỗ nối; thả ra chỗ trống thì thành đầu hở. Giữ <span class="kbd">Alt</span> để tắt hút điểm nối. Mọi thay đổi hoàn tác được bằng Ctrl+Z.</p>
+<p><b>Rẽ nhánh tự động (tee):</b> kéo đầu ống (công cụ Nối ống, Ống hở, hoặc kéo ô vuông ở đầu ống đã có) thả lên giữa thân một ống khác — phần mềm tự đặt điểm rẽ nhánh, chia ống đó làm hai và nối nhánh vào. Khi rê chuột qua thân ống sẽ hiện vòng tròn xanh lá báo sắp tạo nhánh. Đoạn ống phía sau điểm rẽ được đánh số dòng mới.</p>
+<p><b>Chú thích (legend):</b> tự liệt kê màu pha (khí, dầu, nước, hỗn hợp) và các loại đường đang có trong bản vẽ — công nghệ, phụ trợ, tín hiệu đo / điều khiển, trục cơ khí, đường bộ / sắt / thủy. Loại nào không dùng thì không hiện; nhiều mục sẽ tự xuống dòng. Chọn vị trí hoặc tắt trong mục khung tên &amp; khổ giấy.</p>
+<p><b>Làm thẳng ống:</b> nút “📏 Làm thẳng ống” (phím <span class="kbd">J</span>) dời nhẹ thiết bị để các đoạn ống gấp khúc nhỏ trở thành thẳng. Không chọn gì: xử lý cả bản vẽ (ống lệch dưới 10 mm). Chọn thiết bị: các thiết bị đó đứng yên, thiết bị nối với chúng được căn theo. Chọn riêng một ống: chỉ làm thẳng ống đó, kể cả khi lệch nhiều hơn.</p>
+<p><b>Chữ:</b> chọn khung chữ để đổi font, cỡ chữ, đậm / nghiêng, màu. Nút “Font chữ &amp; cỡ chữ…” đặt font và cỡ (pt) cho từng loại chữ: tag, mô tả, thông số, nhãn đường ống, khung tên, bảng.</p>
+<p><b>Khổ giấy &amp; mẫu in:</b> ISO A0–A4, ANSI A–E, ARCH D; ngang / dọc; mẫu khung tên Đơn giản, ISO 5457/7200, US ASME Y14.1, EPC dầu khí hoặc chỉ khung. <b>In / PDF</b> mở cửa sổ xem trước: chọn giấy, tỷ lệ (vừa trang / 100% / tuỳ ý — tự chia nhiều trang), lề, đen trắng; rồi In hoặc Tải PDF.</p>
+<p><b>Bị dồn thiết bị?</b> Dùng <b>Tránh chồng lấn</b>, <b>Giãn khoảng cách</b>, <b>Tự bố trí theo dòng</b> hoặc <b>Đặt giữa trang</b>. Căn “Cùng X / Cùng Y” sẽ xếp mọi thiết bị vào một cột / hàng — chỉ dùng khi muốn vậy. Nút 🕘 mở lịch sử có tên từng bước để quay về.</p>
+<p><b>Giao diện:</b> 🌓 sáng / tối / tự động; VI ⇄ EN; SI ⇄ US (tự quy đổi gần đúng áp suất, nhiệt độ, lưu lượng…); A− / A+ đổi cỡ chữ; “Tương phản” làm nét đậm.</p>
+<p><b>Phím tắt:</b> <span class="kbd">V</span> chọn • <span class="kbd">C</span> nối ống • <span class="kbd">P</span> thêm điểm nối • <span class="kbd">E</span> ống hở • <span class="kbd">T</span> chữ • <span class="kbd">H</span> / <span class="kbd">Space</span> kéo khung nhìn • <span class="kbd">L A B O Y D</span> công cụ vẽ • <span class="kbd">Ctrl+A</span> chọn tất cả • <span class="kbd">Ctrl+C/X/V</span> • <span class="kbd">Ctrl+D</span> nhân bản • <span class="kbd">Mũi tên</span> dịch chuyển (Shift = 50) • <span class="kbd">R</span> xoay • <span class="kbd">F</span> lật • <span class="kbd">Q</span> đổi kiểu vẽ • <span class="kbd">Delete</span> xoá • <span class="kbd">Ctrl+Z/Y</span> • <span class="kbd">Ctrl+S</span> lưu • <span class="kbd">Ctrl+P</span> in • <span class="kbd">Ctrl+0</span> vừa khung • <span class="kbd">F2</span> sửa tag • <span class="kbd">Esc</span> huỷ.</p>
+<p><b>Đọc to:</b> nút “Mô tả” sinh văn bản mô tả bản vẽ để dùng với text-to-speech. <b>Tự lưu:</b> bản vẽ tự lưu trong trình duyệt; dùng Lưu hoặc { } JSON để giữ bản sao.</p>
+<p class="hint">Ký hiệu đơn giản hoá theo thông lệ ISA/ISO 10628 cho PFD — đủ cho thảo luận phương án, báo cáo tiền khả thi, giảng dạy. Phát hành chính thức vẫn phải kiểm tra theo tiêu chuẩn dự án. Bảng kích thước ống lấy từ ASME B36.10M/B36.19M, ISO 4200, ASTM B88, ISO 4427 — hãy đối chiếu bản gốc khi thiết kế thật.</p></div>
+<div class="he nt"><h2>Quick guide — PFD Studio Rev.8</h2>
+<p><b>Add equipment:</b> click an item in the library (or drag it onto the drawing). Search matches English names and style names. The library now includes HP/MP/LP steam turbines, 2–3 stage compressors, gas supply-chain infrastructure (platforms, plants, compressor stations, LNG, consumers…) and transport (tank trucks, trains, ships, containers).</p>
+<p><b>Connect pipes:</b> drag from a blue dot on the source device to a blue dot (or body) of the target. Lines route orthogonally with a flow arrow. The line type is picked automatically: signal (instruments), mechanical shaft (SHAFT ports), or road / rail / sea (when connecting trucks, trains, ships).</p>
+<p><b>Extra pipe connection points:</b> select a device → “Pipe connection points” has ＋Top / Bottom / Left / Right buttons; or press <span class="kbd">P</span> and click the exact spot on the device. Each extra port has a name, side, position and offset; hold <span class="kbd">Alt</span> and drag an orange dot to move it.</p>
+<p><b>Pipe spec:</b> select a line → “Pipe spec”: dimension standard (ASME B36.10M / B36.19M, ISO metric, BWG tube, tubing, copper, HDPE…), size, schedule (complete lists), material (~20 types + “Other”) and pipe class. OD, wall, ID and mass are calculated.</p>
+<p><b>Equipment parameters:</b> free-text box, one parameter per line, with a quick-insert list of common parameter names.</p>
+<p><b>Free drawing:</b> the toolbar has Line (L), Arrow (A), Box (B), Ellipse (O), Polyline (Y), Pen (D). Hold Shift for straight / square / circle. Select a shape to change colour, width, dash, arrowheads, fill, and layer (in front / behind equipment).</p>
+<p><b>Fill, outline and transparency for devices:</b> select a device → “Equipment fill &amp; outline”: turn on fill, change outline colour, outline width (0 = no outline), solid / dashed / dotted line and transparency. Multi-select to change many at once; “Default” restores the original look. Drawn shapes also have “Transparency” and a hidden outline (width 0).</p>
+<p><b>Open pipe / process arrow:</b> click “⤳ Open pipe” or press <span class="kbd">E</span>, then drag from anywhere (or from a device port). The pipe bends at right angles automatically; an end dropped on a port attaches to the device, otherwise it stays open — drag the square handle on an open end to move or attach it later. Hold <span class="kbd">Alt</span> to disable port snapping.</p>
+<p><b>Two-way arrows &amp; arrowhead size:</b> select a pipe → “Flow arrows”: add an arrow at the start, hide the end arrow, and scale the size 0.5–3×.</p>
+<p><b>Lines / arrows that stick to devices:</b> when drawing a Line (L) or Arrow (A), an end near a port snaps to it and follows the device when it moves; drag the end handle away to detach. Arrowhead size is in the properties panel.</p>
+<p><b>Turn a drawn shape into a custom device:</b> select a box / ellipse / polyline → “⚙ Add ports → make it a device”; then press <span class="kbd">P</span> to add pipe ports as on any device. Clicking a drawn shape with the Port tool converts it too.</p>
+<p><b>Reconnect a pipe:</b> select a pipe — a square appears at each end (orange = attached to a device, blue = open end). Drag a square to another port / device to reconnect; drop it in empty space to leave the end open. Hold <span class="kbd">Alt</span> to disable port snapping. Everything can be undone with Ctrl+Z.</p>
+<p><b>Automatic branch (tee):</b> drag a pipe end (Connect tool, Open pipe tool, or the square handle on an existing pipe) and drop it on the middle of another pipe — the app places a tee point, splits that pipe in two and connects the branch. A green circle shows where the branch will be made. The part downstream of the tee gets a new line number.</p>
+<p><b>Legend:</b> automatically lists the phase colours (gas, oil, water, mixed) and the line types that actually appear in the drawing — process, utility, instrument / control signal, mechanical shaft, road / rail / sea. Unused types are not listed; long legends wrap onto more rows. Choose the position or turn it off in the sheet &amp; title-block section.</p>
+<p><b>Straighten pipes:</b> the “📏 Straighten pipes” button (key <span class="kbd">J</span>) nudges devices so small kinks in pipes become straight. Nothing selected: the whole drawing (offsets under 10 mm). Devices selected: they stay fixed and connected devices align to them. A single pipe selected: only that pipe, even for larger offsets.</p>
+<p><b>Text:</b> select a text box to change font, size, bold / italic, colour. “Fonts &amp; sizes…” sets font and size (pt) for every text element: tags, descriptions, parameters, line labels, title block, tables.</p>
+<p><b>Sheet &amp; print templates:</b> ISO A0–A4, ANSI A–E, ARCH D; landscape / portrait; title-block templates Simple, ISO 5457/7200, US ASME Y14.1, oil &amp; gas EPC, or border only. <b>Print / PDF</b> opens a preview: choose paper, scale (fit / 100% / custom — tiles across pages automatically), margin, black &amp; white; then Print or Download PDF.</p>
+<p><b>Devices crowded together?</b> Use <b>Remove overlaps</b>, <b>Spread</b>, <b>Auto layout</b> or <b>Center on page</b>. “Same X / Same Y” puts every device in one column / row — use it only when intended. The 🕘 button opens a named history to jump back to any step.</p>
+<p><b>Interface:</b> 🌓 light / dark / auto; VI ⇄ EN; SI ⇄ US (approximate auto-conversion of pressure, temperature, flow…); A− / A+ text size; “Contrast” thickens lines.</p>
+<p><b>Shortcuts:</b> <span class="kbd">V</span> select • <span class="kbd">C</span> connect • <span class="kbd">P</span> add port • <span class="kbd">E</span> open pipe • <span class="kbd">T</span> text • <span class="kbd">H</span> / <span class="kbd">Space</span> pan • <span class="kbd">L A B O Y D</span> drawing tools • <span class="kbd">Ctrl+A</span> select all • <span class="kbd">Ctrl+C/X/V</span> • <span class="kbd">Ctrl+D</span> duplicate • <span class="kbd">Arrows</span> nudge (Shift = 50) • <span class="kbd">R</span> rotate • <span class="kbd">F</span> flip • <span class="kbd">Q</span> change style • <span class="kbd">Delete</span> • <span class="kbd">Ctrl+Z/Y</span> • <span class="kbd">Ctrl+S</span> save • <span class="kbd">Ctrl+P</span> print • <span class="kbd">Ctrl+0</span> fit view • <span class="kbd">F2</span> edit tag • <span class="kbd">Esc</span> cancel.</p>
+<p><b>Read aloud:</b> the “Describe” button produces a text description for text-to-speech. <b>Auto-save:</b> the drawing is saved in the browser; use Save or { } JSON to keep a copy.</p>
+<p class="hint">Symbols are simplified following ISA/ISO 10628 practice for PFDs — fine for concept discussions, pre-feasibility reports and teaching. Formal issue still needs checking against the project standards. Pipe dimension tables come from ASME B36.10M/B36.19M, ISO 4200, ASTM B88, ISO 4427 — verify against the originals for real design.</p></div>
+</div>
+<button class="btn primary" onclick="toggleHelp(false)">Đã hiểu</button></div></div>
+
+<div class="modal" id="mStreams"><div class="card wide" role="dialog" aria-label="Bảng dòng"><h2>Bảng dòng công nghệ</h2>
+ <div class="hint">Sửa trực tiếp trong bảng, kể cả tiêu chuẩn ống, size, schedule, vật liệu; bản vẽ cập nhật ngay. Đường tín hiệu và trục không nằm trong bảng này.</div>
+ <div style="overflow:auto;max-height:58vh;margin-top:.5rem"><table class="t" id="streamTbl"></table></div>
+ <div class="mbar"><button class="btn" onclick="renumberStreams()">🔢 Đánh số lại</button><button class="btn" onclick="exportStreamsCSV()">⬇ Tải CSV</button><button class="btn" onclick="copyStreams()">📋 Sao chép (dán Excel)</button>
+ <label class="chk" style="margin:0"><input type="checkbox" data-meta="showTable">Hiện bảng trên bản vẽ</label><span style="flex:1"></span><button class="btn primary" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="mEquip"><div class="card wide" role="dialog" aria-label="Danh sách thiết bị"><h2>Danh sách thiết bị</h2>
+ <div class="hint">Bấm một dòng để chọn thiết bị đó trên bản vẽ.</div>
+ <div style="overflow:auto;max-height:56vh;margin-top:.5rem"><table class="t" id="equipTbl"></table></div>
+ <div class="mbar"><button class="btn" onclick="exportEquipCSV()">⬇ Tải CSV</button><span style="flex:1"></span><button class="btn primary" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="mDesc"><div class="card" role="dialog" aria-label="Mô tả bản vẽ"><h2>Mô tả bản vẽ bằng chữ</h2>
+ <div class="desc" id="descTxt" tabindex="0" role="document"></div>
+ <div class="mbar"><button class="btn" onclick="copyText($('descTxt').textContent)">📋 Sao chép</button><span style="flex:1"></span><button class="btn primary" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="mJSON"><div class="card" role="dialog" aria-label="JSON"><h2>Nội dung bản vẽ (JSON)</h2>
+ <div class="hint">Sao chép để lưu ở nơi khác, hoặc dán JSON đã lưu vào đây rồi bấm “Nạp”. Dùng khi nút Lưu/Mở bị trình duyệt chặn.</div>
+ <textarea id="jsonTxt" rows="14" style="font-family:monospace;font-size:.8rem;margin-top:.5rem" aria-label="Nội dung JSON"></textarea>
+ <div class="mbar"><button class="btn" onclick="copyText($('jsonTxt').value)">📋 Sao chép</button><button class="btn primary" onclick="loadFromText()">📥 Nạp từ ô này</button><span style="flex:1"></span><button class="btn" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="mPrint"><div class="card wide" role="dialog" aria-label="Xem trước khi in"><h2>Xem trước khi in</h2>
+ <div class="pplay">
+  <div>
+   <label for="pp_paper">Khổ giấy in</label><select id="pp_paper" onchange="PP.page=0;ppRefresh()"></select>
+   <label for="pp_orient">Hướng giấy</label><select id="pp_orient" onchange="PP.page=0;ppRefresh()"><option value="auto">Tự động theo bản vẽ</option><option value="landscape">Ngang</option><option value="portrait">Dọc</option></select>
+   <label for="pp_scale">Tỷ lệ in</label><select id="pp_scale" onchange="PP.page=0;ppRefresh()"><option value="fit">Vừa trang giấy</option><option value="100">100% (kích thước thật, chia nhiều trang nếu cần)</option><option value="pct">Tuỳ chỉnh %</option></select>
+   <div id="pp_pctBox" style="display:none"><label for="pp_pct">Tỷ lệ (%)</label><input id="pp_pct" type="number" min="5" max="800" value="100" oninput="PP.page=0;ppRefresh()"></div>
+   <label for="pp_margin">Lề giấy (mm)</label><input id="pp_margin" type="number" min="0" max="40" step="0.5" value="5" oninput="ppRefresh()">
+   <label class="chk"><input type="checkbox" id="pp_bw" onchange="ppRefresh()">In đen trắng (mọi màu thành đen)</label>
+   <div class="hint" id="ppInfo" style="margin-top:.5rem"></div>
+   <div class="row" style="margin-top:.6rem"><button class="btn" id="ppPrev" onclick="ppNav(-1)">◀</button><span id="ppPageLbl" class="nt" style="text-align:center;flex:1.5"></span><button class="btn" id="ppNext" onclick="ppNav(1)">▶</button></div>
+   <div class="hint" style="margin-top:.6rem">Nếu trình xem này chặn hộp thoại in, hãy bấm <b>Tải PDF</b> (in từ tệp PDF) hoặc mở tệp HTML trực tiếp bằng trình duyệt rồi in. PDF xuất ra là PDF vector (nét và chữ phóng to không vỡ, chữ chọn / sao chép được).</div>
+  </div>
+  <div class="ppview-wrap"><div id="ppView"></div></div>
+ </div>
+ <div class="mbar"><button class="btn primary" onclick="doPrint()">🖨 In</button><button class="btn" onclick="downloadPDF()">⬇ Tải PDF</button><button class="btn" onclick="openPrintTab()">↗ Mở bản in ở tab mới</button><button class="btn" onclick="exportSVG()">⬇ SVG</button><span style="flex:1"></span><button class="btn" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="mFonts"><div class="card" role="dialog" aria-label="Font chữ và cỡ chữ"><h2>Font chữ &amp; cỡ chữ</h2>
+ <div class="hint">Cỡ chữ tính bằng pt trên giấy in thật (A3 in 100%). Hệ số cỡ chữ ở mục “Nét vẽ &amp; cỡ chữ” vẫn nhân thêm. Khung chữ riêng chọn font / cỡ ngay trong bảng Thuộc tính.</div>
+ <div class="row" style="margin:.5rem 0"><select id="fontAll" aria-label="Font"></select><button class="btn" style="flex:0 0 auto" onclick="fontAllApply()">Áp cho mọi chữ</button><button class="btn" style="flex:0 0 auto" onclick="fontScaleAll(1.1)">Cỡ +10%</button><button class="btn" style="flex:0 0 auto" onclick="fontScaleAll(0.9)">Cỡ −10%</button></div>
+ <div style="overflow:auto;max-height:52vh"><table class="t" id="fontTbl"></table></div>
+ <div class="mbar"><button class="btn" onclick="fontReset()">↺ Mặc định</button><span style="flex:1"></span><button class="btn primary" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="mRevs"><div class="card wide" role="dialog" aria-label="Bảng revision"><h2>Bảng revision</h2>
+ <div class="hint">Hiện phía trên khung tên trong các mẫu ISO, US và EPC (tối đa 8 dòng gần nhất).</div>
+ <div style="overflow:auto;max-height:52vh;margin-top:.5rem"><table class="t" id="revTbl"></table></div>
+ <div class="mbar"><button class="btn" onclick="addRevRow()">＋ Thêm dòng</button><span style="flex:1"></span><button class="btn primary" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="mHist"><div class="card" role="dialog" aria-label="Lịch sử thao tác"><h2>Lịch sử thao tác</h2>
+ <div class="hint">Bấm một dòng để quay về đúng bước đó (có thể làm lại sau).</div>
+ <div style="overflow:auto;max-height:56vh;margin-top:.5rem"><table class="t"><thead><tr><th>#</th><th>Thao tác</th><th></th></tr></thead><tbody id="histList"></tbody></table></div>
+ <div class="mbar"><button class="btn" onclick="undo();renderHistPanel()">↩ Hoàn tác</button><button class="btn" onclick="redo();renderHistPanel()">↪ Làm lại</button><span style="flex:1"></span><button class="btn primary" onclick="closeModals()">Đóng</button></div></div></div>
+
+<div class="modal" id="mSettings"><div class="card" role="dialog" aria-label="Cài đặt"><h2>Cài đặt</h2>
+ <label for="st_theme">Giao diện</label><select id="st_theme" onchange="setTheme(this.value)"><option value="auto">Tự động theo hệ thống</option><option value="light">Sáng</option><option value="dark">Tối</option></select>
+ <label class="chk"><input type="checkbox" id="st_dark" onchange="setDarkPaper(this.checked)">Khi giao diện tối, tờ giấy trên màn hình cũng tối (bản in và file xuất luôn nền trắng)</label>
+ <label for="st_lang">Ngôn ngữ / Language</label><select id="st_lang" class="nt" onchange="setLang(this.value)"><option value="vi">Tiếng Việt</option><option value="en">English</option></select>
+ <label for="st_units">Hệ đơn vị</label><select id="st_units" onchange="setUnits(this.value)"><option value="SI">SI (bar, °C, m, m³…)</option><option value="US">US (psi, °F, ft, bbl…)</option></select>
+ <details class="udet"><summary>Đơn vị mặc định cho từng đại lượng (bản vẽ hiện tại)</summary>
+  <p class="hint">Đổi hệ SI / US sẽ đặt lại các đơn vị mặc định theo hệ đó. Đơn vị mặc định được dùng khi bạn gõ số trần (ví dụ “85” → “85 barg”) và khi thêm nhanh thông số.</p>
+  <div id="st_udef"></div><button class="btn" onclick="resetUnitDefaults()">Đặt lại theo hệ đơn vị đang chọn</button></details>
+ <label class="chk"><input type="checkbox" id="st_hc" onchange="toggleHC()">Tương phản cao, nét vẽ đậm</label>
+ <label class="chk"><input type="checkbox" id="st_tips" onchange="setTips(this.checked)">Hiện tooltip khi rê chuột</label>
+ <label class="chk"><input type="checkbox" id="st_ports" onchange="toggleShowPorts(this.checked)">Luôn hiện mọi điểm nối ống</label>
+ <div class="mbar"><button class="btn nt" onclick="setUI(-0.1)">A−</button><button class="btn nt" onclick="setUI(0.1)">A+</button><span class="hint">Cỡ chữ giao diện</span><span style="flex:1"></span><button class="btn primary" onclick="closeModals()">Đóng</button></div></div></div>
+
+<script>
+/*@@JS@@*/
+</script>
+</body></html>
