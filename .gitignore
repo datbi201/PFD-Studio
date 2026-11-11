@@ -12,12 +12,30 @@ __pycache__/
 # OS files
 Thumbs.db
 Desktop.ini
+desktop.ini
 .DS_Store
 
 # Virtual environments
+.venv/
 venv/
 env/
 .env
 
-# Logs
+# Binary archives & databases (stored in 02_LOCAL_RUNTIME and 03_ONEDRIVE_BACKUP)
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.sqlite
+*.sqlite3
+*.db
+*.dxf
+*.oxt
+
+# Node / Web caches
+node_modules/
+.npm/
+
+# Logs & testing
 *.log
+.pytest_cache/
