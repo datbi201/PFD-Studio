@@ -18,3 +18,9 @@
 - `r7/`: mã nguồn Rev.7 — `base7.html` (khung trang + CSS), `assemble7.py` (script gộp thành 1 file, dùng `python3 assemble7.py <output.html>`), `js/`, `lib/` (thư viện ký hiệu thiết bị), `en/` (bản dịch tiếng Anh), `scn/`, `fontwork/`, `test/` (kịch bản kiểm tra Playwright, không gồm ảnh/PDF xuất ra).
 
 Rev.7 bổ sung: nhiều kiểu dáng thiết bị mới (~150 biến thể + 17 loại ngành khác), tô màu/viền thiết bị, nét đứt/chấm, ống hở (mũi tên công nghệ không dẫn đi đâu), biến hình vẽ thành thiết bị tuỳ chỉnh, viền ẩn & độ trong suốt, đường/mũi tên tự dính điểm nối, mũi tên hai chiều, đổi chỗ nối ống sau khi đã nối, tự tạo điểm nhánh (tee) khi kéo ống vào thân ống khác, legend liệt kê theo loại đường có trong bản vẽ, sửa lỗi tên thiết bị không đổi theo ngôn ngữ, và lệnh "Làm thẳng ống" (phím J).
+
+## Rev.8.5 — thư viện ký hiệu mở (1.043 ký hiệu)
+- File chạy: `PFD-Studio_Rev.8.5.html` (một file, nhúng sẵn thư viện, chạy offline).
+- Nguồn: Wikimedia ISO 10628 (440), Radica (317), Draftsperson (150), draw.io (87), LibreOffice (49). Cộng ký hiệu sẵn có: 1.188 loại, 57 nhóm.
+- Sửa so với Rev.8.4: hết ký hiệu đặc đen (lớp `bodyfill`), bình chịu áp ngang/đứng vẽ lại, có banner đỏ khi bản vẽ chứa loại ký hiệu lạ.
+- Giấy phép từng nguồn: `symbol-library/LICENSE-attribution.md` (CC BY-SA và LGPL-3.0 có điều kiện riêng khi phát hành thương mại).
