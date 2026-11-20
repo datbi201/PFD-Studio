@@ -4,6 +4,8 @@
 
 Ứng dụng chạy hoàn toàn độc lập (Offline / Single-file HTML), không cần cài đặt máy chủ, không phụ thuộc internet.
 
+![PFD Studio Rev.8: thư viện thiết bị bên trái, bản vẽ ở giữa, bảng thuộc tính bên phải](docs/images/pfd-studio-rev8.png)
+
 ---
 
 ## Tính Năng Cốt Lõi (Rev.8 — Một Phần Mềm Duy Nhất)
@@ -20,7 +22,7 @@
 
 ## Cấu Trúc Mã Nguồn Repository
 ```
-01_REPO_GITHUB/
+PFD-Studio/
 ├── index.html                          # Bản phát hành chính Rev.8 (chạy ngay trên mọi trình duyệt)
 ├── pfd-studio-26.11.11-Rev.8.html     # Bản đóng gói Rev.8 chính thức
 ├── r8/                                 # Toàn bộ mã nguồn module hóa Rev.8
@@ -42,8 +44,7 @@
 
 ## Hướng Dẫn Khởi Chạy
 1. **Chạy ngay:** Mở trực tiếp file `index.html` hoặc `pfd-studio-26.11.11-Rev.8.html` bằng bất kỳ trình duyệt web nào (Chrome, Edge, Firefox).
-2. **Tiện ích 1-click:** Nhấp đúp chuột vào file [`run_pfd_studio.bat`](../run_pfd_studio.bat) ở thư mục gốc để mở ngay phiên bản mới nhất.
-3. **Đóng gói mã nguồn từ `r8/`:** Chạy lệnh `python r8/assemble.py` để biên dịch ra file HTML mới.
+2. **Đóng gói mã nguồn từ `r8/`:** Chạy lệnh `python r8/assemble.py` để biên dịch ra file HTML mới.
 
 ---
 
